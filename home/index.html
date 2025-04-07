@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Sportif - Votre Partenaire Fitness</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <img src="../img/logo.jpeg" alt="Logo" class="logo">
+    <h1>Zone 2 coaching</h1>
+    <nav>
+        <a href="#suivi">Suivi</a>
+        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+    </nav>
+</header>
+
+<main>
+    <section class="section">
+        <div class="section-content">
+            <h2>Votre Transformation Commence Ici</h2>
+            <p>Découvrez une approche personnalisée du fitness adaptée à vos objectifs. Que vous souhaitiez perdre du poids, gagner en muscle ou améliorer votre condition physique, nous vous accompagnons à chaque étape de votre parcours.</p>
+        </div>
+        <img src="../img/le-b.jpeg" alt="Entraînement sportif">
+    </section>
+
+    <section class="section reverse">
+        <img src="" alt="Contactez moi">
+        <div class="section-content">
+            <h2>Tarification</h2>
+            <p>Nous proposons une formule unique adaptée à tous vos besoins. Notre forfait Premium comprend un suivi personnalisé, un plan d'entraînement sur mesure et des conseils nutritionnels pour optimiser vos résultats.</p>
+            <div class="pricing-box">
+                <h3>Forfait Premium</h3>
+                <p class="price">90€ / mois</p>
+                <ul class="pricing-features">
+                    <li>2 séances d'entraînement par semaine</li>
+                    <li>Plan nutritionnel personnalisé</li>
+                    <li>Suivi et ajustements réguliers</li>
+                    <li>Accès à notre application mobile</li>
+                </ul>
+                <a href="#" class="cta-button" id="openPopupBtn">Me contacter !</a>
+            </div>
+        </div>
+
+        <!-- Pop-up pour le formulaire de contact -->
+        <div id="contactPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h3>Contactez-nous</h3>
+                    <span class="close-popup">&times;</span>
+                </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="subject">Titre</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel">Annuler</button>
+                        <button type="submit" onclick="sendLoginRequest()" class="btn-submit">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Avis Clients</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <img src="/api/placeholder/80/80" alt="Photo de Marie L." class="testimonial-photo">
+                <h3 class="testimonial-title">Perte de poids réussie</h3>
+                <p class="testimonial-text">"Un coach exceptionnel qui m'a aidée à atteindre mes objectifs en 3 mois ! J'ai perdu 10 kilos et retrouvé une énergie que je n'avais plus depuis des années. L'approche personnalisée fait toute la différence."</p>
+                <p class="testimonial-author">Marie L.</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="/api/placeholder/80/80" alt="Photo de Thomas R." class="testimonial-photo">
+                <h3 class="testimonial-title">Préparation marathon</h3>
+                <p class="testimonial-text">"Très professionnel et à l'écoute. Je recommande vivement ! Grâce à son programme d'entraînement sur mesure, j'ai pu courir mon premier marathon avec une préparation optimale et sans blessure."</p>
+                <p class="testimonial-author">Thomas R.</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="/api/placeholder/80/80" alt="Photo de Sophie M." class="testimonial-photo">
+                <h3 class="testimonial-title">Remise en forme post-grossesse</h3>
+                <p class="testimonial-text">"Grâce à son programme personnalisé, j'ai retrouvé la forme et la motivation après ma grossesse. Les exercices adaptés et le suivi nutritionnel m'ont permis de retrouver mon corps d'avant en douceur."</p>
+                <p class="testimonial-author">Sophie M.</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="/api/placeholder/80/80" alt="Photo de Pierre D." class="testimonial-photo">
+                <h3 class="testimonial-title">Musculation et performance</h3>
+                <p class="testimonial-text">"Un accompagnement de qualité et des résultats au rendez-vous. En six mois, j'ai gagné en masse musculaire tout en améliorant mes performances sportives. Les conseils nutritionnels ont été déterminants."</p>
+                <p class="testimonial-author">Pierre D.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section FAQ -->
+    <section id="faq" class="faq-section">
+        <h2>Questions Fréquentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Comment se déroule la première séance ?</div>
+                <div class="faq-answer">
+                    <p>La première séance est dédiée à un bilan complet : nous évaluons ensemble votre condition physique actuelle, vos objectifs et vos contraintes éventuelles. Cette étape est essentielle pour élaborer un programme personnalisé adapté à vos besoins. Prévoyez environ 1h30 pour cette séance d'évaluation.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Quelles sont les tarifs proposés ?</div>
+                <div class="faq-answer">
+                    <p>Nous proposons plusieurs formules :</p>
+                    <ul>
+                        <li>Séance individuelle : 60€</li>
+                        <li>Forfait 10 séances : 550€ (soit 55€/séance)</li>
+                        <li>Suivi mensuel (8 séances + suivi nutritionnel) : 440€/mois</li>
+                        <li>Coaching en ligne : à partir de 150€/mois</li>
+                    </ul>
+                    <p>N'hésitez pas à nous contacter pour une offre personnalisée.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Faut-il déjà être sportif pour commencer ?</div>
+                <div class="faq-answer">
+                    <p>Absolument pas ! Nos programmes sont adaptés à tous les niveaux, du débutant complet au sportif confirmé. L'important est votre motivation et votre régularité. Nous ajustons l'intensité et la difficulté des exercices en fonction de votre niveau et de votre progression.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Proposez-vous un suivi nutritionnel ?</div>
+                <div class="faq-answer">
+                    <p>Oui, le suivi nutritionnel fait partie intégrante de notre approche. Nous vous proposons des conseils personnalisés et un plan alimentaire adapté à vos objectifs et à vos habitudes. Ce suivi peut être inclus dans certaines formules ou ajouté en option (90€/mois pour le suivi nutritionnel seul).</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Où se déroulent les séances d'entraînement ?</div>
+                <div class="faq-answer">
+                    <p>Nous disposons d'une salle d'entraînement équipée dans le centre-ville. Nous proposons également des séances à domicile ou en extérieur (parcs, jardins publics) selon vos préférences. Le lieu est à définir ensemble en fonction de vos besoins et de votre localisation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: contact@coachsportif.fr</p>
+            <p>Tél: 06 12 34 56 78</p>
+        </div>
+        <div class="footer-section">
+            <h3>Horaires</h3>
+            <p>Lundi - Vendredi: 8h - 20h</p>
+            <p>Samedi: 9h - 18h</p>
+        </div>
+        <div class="footer-section">
+            <h3>Suivez-nous</h3>
+            <p>Facebook</p>
+            <p>Instagram</p>
+            <p>LinkedIn</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Script pour la fonctionnalité d'accordéon de la FAQ
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentNode;
+
+                // Ferme tous les autres items ouverts
+                document.querySelectorAll('.faq-item.active').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Bascule l'état actif de l'item cliqué
+                faqItem.classList.toggle('active');
+            });
+        });
+    });
+
+    function sendLoginRequest() {
+        const url = "http://localhost:8080/sendmail"; // URL de l'API
+
+        const subject = document.getElementById("subject").value.trim();
+        const message = document.getElementById("message").value.trim()
+
+        const response = fetch(url, {
+            method: "GET", // Type de requête
+            headers: {
+                "Content-Type": "application/json", // Type des données envoyées
+            },
+            body: JSON.stringify({ subject, message }), // Corps de la requête
+        });
+
+        // Vérifier si la requête a réussi
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Retourner les données JSON de la réponse
+        return response.json();
+    }
+
+    // Script pour la pop-up de contact
+    document.addEventListener('DOMContentLoaded', function() {
+        // Éléments
+        const popup = document.getElementById('contactPopup');
+        const openBtn = document.getElementById('openPopupBtn');
+        const closePopup = document.querySelector('.close-popup');
+        const cancelBtn = document.querySelector('.btn-cancel');
+
+        // Ouvrir la pop-up
+        openBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Empêche le défilement
+        });
+
+        // Fermer la pop-up - X
+        closePopup.addEventListener('click', function() {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Réactive le défilement
+        });
+
+        // Fermer la pop-up - Bouton annuler
+        cancelBtn.addEventListener('click', function() {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Réactive le défilement
+        });
+
+        // Fermer en cliquant en dehors
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Réactive le défilement
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
