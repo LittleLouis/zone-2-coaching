@@ -3,8 +3,9 @@ use axum::{
     Router,
 };
 use axum::handler::HandlerWithoutStateExt;
-use axum::http::{Method, StatusCode};
+use axum::http::{Method, StatusCode, Uri};
 use axum::http::header::CONTENT_TYPE;
+use axum_limit::LimitState;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
@@ -28,6 +29,7 @@ pub async fn start_server() {
             .append_index_html_on_directories(true)
             .not_found_service(service_not_found))
         .route("/sendmail", post(send_mail))
+        .with_state(LimitState::<Uri>::default())
         .layer(TraceLayer::new_for_http())
         .layer(cors);
     info!("Routes configurées");

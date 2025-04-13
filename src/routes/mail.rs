@@ -1,9 +1,10 @@
 use axum::{
-    extract,
     http::StatusCode,
     response::{IntoResponse, Response},
     Json,
 };
+use axum::http::Uri;
+use axum_limit::LimitPerSecond;
 use serde_json::json;
 use tracing::{error, info};
 
@@ -41,7 +42,7 @@ impl IntoResponse for ApiResponse {
 }
 
 pub async fn send_mail(
-    extract::Json(email_form): extract::Json<MailModel>,
+    _: LimitPerSecond<1, Uri>, Json(email_form): Json<MailModel>
 ) -> Result<ApiResponse, ApiResponse> {
     info!("Envoi d'email - Titre: '{}', Message: '{}'", email_form.title, email_form.message);
 
@@ -56,7 +57,7 @@ pub async fn send_mail(
 
     // Configuration des adresses email
     let config = EmailConfig {
-        from: "Guilbaud <cmoilouis@gmail.com>".to_string(),
+        from: "Zone 2 coaching <cmoilouis@gmail.com>".to_string(),
         reply_to: "bastien.guilbaud@gmail.com".to_string(),
         to: "bastien.guilbaud@gmail.com".to_string(),
         smtp_server: "smtp.gmail.com".to_string(),

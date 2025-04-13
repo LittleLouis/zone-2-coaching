@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-actions">
                         <button type="button" class="btn-cancel">Annuler</button>
-                        <button type="button" onclick="sendLoginRequest()" class="btn-submit">Envoyer</button>
+                        <button type="button" onclick="sendEmailRequest()" class="btn-submit">Envoyer</button>
                     </div>
                 </form>
             </div>
@@ -187,7 +187,7 @@
         });
     });
 
-    function sendLoginRequest() {
+    function sendEmailRequest() {
         const url = "http://localhost:8080/sendmail"; // URL de l'API
 
         const subject = document.getElementById("subject").value.trim();
@@ -195,7 +195,7 @@
 
         // Ajouter un indicateur visuel que la requête est en cours (optionnel)
         const submitBtn = document.querySelector(".btn-submit");
-        if (submitBtn) submitBtn.disabled = true;
+        //if (submitBtn) submitBtn.disabled = true;
 
         fetch(url, {
             method: "POST", // Changé de GET à POST
