@@ -51,7 +51,7 @@
                     <h3>Contactez-nous</h3>
                     <span class="close-popup">&times;</span>
                 </div>
-                <form id="contactForm">
+                <form id="contactForm" onsubmit="return false;">
                     <div class="form-group">
                         <label for="subject">Titre</label>
                         <input type="text" id="subject" name="subject" required>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-actions">
                         <button type="button" class="btn-cancel">Annuler</button>
-                        <button type="submit" onclick="sendLoginRequest()" class="btn-submit">Envoyer</button>
+                        <button type="button" onclick="sendLoginRequest()" class="btn-submit">Envoyer</button>
                     </div>
                 </form>
             </div>
@@ -191,23 +191,42 @@
         const url = "http://localhost:8080/sendmail"; // URL de l'API
 
         const subject = document.getElementById("subject").value.trim();
-        const message = document.getElementById("message").value.trim()
+        const message = document.getElementById("message").value.trim();
 
-        const response = fetch(url, {
-            method: "GET", // Type de requête
+        // Ajouter un indicateur visuel que la requête est en cours (optionnel)
+        const submitBtn = document.querySelector(".btn-submit");
+        if (submitBtn) submitBtn.disabled = true;
+
+        fetch(url, {
+            method: "POST", // Changé de GET à POST
             headers: {
-                "Content-Type": "application/json", // Type des données envoyées
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify({ subject, message }), // Corps de la requête
-        });
+            body: JSON.stringify({ title: subject, message: message }) // Adapté aux attentes du backend
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Email envoyé avec succès:", data);
+                // Fermer la popup après succès
+                document.getElementById("contactPopup").style.display = 'none';
+                document.body.style.overflow = 'auto';
 
-        // Vérifier si la requête a réussi
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        // Retourner les données JSON de la réponse
-        return response.json();
+                // Réinitialiser le formulaire
+                document.getElementById("contactForm").reset();
+            })
+            .catch(error => {
+                console.error("Erreur lors de l'envoi:", error);
+                alert("Une erreur s'est produite lors de l'envoi du message.");
+            })
+            .finally(() => {
+                // Réactiver le bouton dans tous les cas
+                if (submitBtn) submitBtn.disabled = false;
+            });
     }
 
     // Script pour la pop-up de contact
