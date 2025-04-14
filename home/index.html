@@ -5,99 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach Sportif - Votre Partenaire Fitness</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" type="text/javascript"></script>
 </head>
 <body>
+
 <header>
-    <img src="../img/logo.jpeg" alt="Logo" class="logo">
-    <h1>Zone 2 coaching</h1>
-    <nav>
-        <a href="#suivi">Suivi</a>
-        <a href="#contact">Contact</a>
-        <a href="#faq">FAQ</a>
-    </nav>
+    <div class="header-left">
+        <img src="img/logo.jpeg" alt="Logo" class="logo">
+        <h1>Zone 2 coaching</h1>
+    </div>
 </header>
 
 <main>
     <section class="section">
         <div class="section-content">
-            <h2>Bienvenue chez Zone 2 Coaching.</h2>
-            <p>Quel que soit ton niveau ou ton expérience en sport d'endurance, un suivi personnalisé est souvent gage de <strong>réussite</strong>.</p>
-        <p>En tant que passionné de physiologie, d'entrainement, et d'optimisation de la performance en course à pied et triathlon, je propose mes services aux athlètes désirant un plan d'entrainement qui colle à leurs ambitions, qui respecte leurs contraintes extra-sportives et qui est individualisé pour optimiser leur progression.</p>
-    <p>Grace à mes connaissances scientifiques et mon expérience du terrain, je t'accompagne dans la réussite de tes objectifs.</p>
+            <h2>Bienvenue chez Zone 2 Coaching</h2>
+            <p>Quel que soit ton niveau ou ton expérience en sport d'endurance, un suivi personnalisé est souvent gage
+                de <strong>réussite</strong>.</p>
+            <p>En tant que passionné de physiologie, d'entrainement, et d'optimisation de la performance en course à
+                pied et triathlon, je propose mes services aux athlètes désirant un plan d'entrainement qui colle à
+                leurs ambitions, qui respecte leurs contraintes extra-sportives et qui est individualisé pour optimiser
+                leur progression.</p>
+            <p>Grace à mes connaissances scientifiques et mon expérience du terrain, je t'accompagne dans la réussite de
+                tes objectifs.</p>
         </div>
-        <img src="../img/le-b.jpeg" alt="Entraînement sportif">
+        <img src="img/le-b.jpeg" alt="Entraînement sportif">
     </section>
 
-   <section class="section reverse">
-  <img src="" alt="Contactez moi">
-  <div class="section-content">
-    <h2>Les suivis personnalisés</h2>
+    <section id="#suivi" class="section reverse">
+        <div class="section-content">
+            <h2>Les suivis personnalisés</h2>
 
-    <div class="pricing-grid">
-      <!-- Forfait Essentiel -->
-      <div class="pricing-box">
-        <h3>Forfait Essentiel</h3>
-        <p class="price">90€ / mois</p>
-        <ul class="pricing-features">
-          <li>1 séance d'entraînement par semaine</li>
-          <li>Conseils nutritionnels de base</li>
-          <li>Suivi mensuel</li>
-        </ul>
-        <a href="#" class="cta-button" id="openPopupBtn">Me contacter !</a>
-      </div>
-
-      <!-- Forfait Premium -->
-      <div class="pricing-box">
-        <h3>Forfait Premium</h3>
-        <p class="price">110€ / mois</p>
-        <ul class="pricing-features">
-          <li>2 séances d'entraînement par semaine</li>
-          <li>Plan nutritionnel personnalisé</li>
-          <li>Suivi et ajustements réguliers</li>
-          <li>Accès à notre application mobile</li>
-        </ul>
-        <a href="#" class="cta-button" id="openPopupBtn">Me contacter !</a>
-      </div>
-
-      <!-- Forfait Elite -->
-      <div class="pricing-box">
-        <h3>Forfait Elite</h3>
-        <p class="price">150€ / mois</p>
-        <ul class="pricing-features">
-          <li>3 séances d'entraînement par semaine</li>
-          <li>Bilan physiologique trimestriel</li>
-          <li>Suivi hebdomadaire approfondi</li>
-          <li>Coaching mental & préparation mentale</li>
-        </ul>
-        <a href="#" class="cta-button" id="openPopupBtn">Me contacter !</a>
-      </div>
-    </div>
-  </div>
-
-        <!-- Pop-up pour le formulaire de contact -->
-        <div id="contactPopup" class="popup-overlay">
-            <div class="popup-container">
-                <div class="popup-header">
-                    <h3>Contactez-nous</h3>
-                    <span class="close-popup">&times;</span>
+            <div class="pricing-grid">
+                <!-- Forfait Essentiel -->
+                <div class="pricing-box">
+                    <h3>Forfait Essentiel</h3>
+                    <p class="price">90€ / mois</p>
+                    <ul class="pricing-features">
+                        <li class="valid">1 séance d'entraînement par semaine</li>
+                        <li class="valid">Conseils nutritionnels de base</li>
+                        <li class="valid">Suivi mensuel</li>
+                        <li class="invalid">Ptite pipe</li>
+                    </ul>
+                    <a href="#" class="openPopupBtn cta-button">Me contacter !</a>
                 </div>
-                <form id="contactForm" onsubmit="return false;">
-                    <div class="form-group">
-                        <label for="subject">Titre</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="btn-cancel">Annuler</button>
-                        <button type="button" onclick="sendEmailRequest()" class="btn-submit">Envoyer</button>
-                    </div>
-                </form>
+
+                <!-- Forfait Premium -->
+                <div class="pricing-box">
+                    <h3>Forfait Premium</h3>
+                    <p class="price">110€ / mois</p>
+                    <ul class="pricing-features">
+                        <li class="valid">2 séances d'entraînement par semaine</li>
+                        <li class="valid">Plan nutritionnel personnalisé</li>
+                        <li class="valid">Suivi et ajustements réguliers</li>
+                        <li class="valid">Accès à notre application mobile</li>
+                    </ul>
+                    <a href="#" class="openPopupBtn cta-button">Me contacter !</a>
+                </div>
+
+                <!-- Forfait Elite -->
+                <div class="pricing-box">
+                    <h3>Forfait Elite</h3>
+                    <p class="price">150€ / mois</p>
+                    <ul class="pricing-features">
+                        <li class="valid">3 séances d'entraînement par semaine</li>
+                        <li class="valid">Bilan physiologique trimestriel</li>
+                        <li class="valid">Suivi hebdomadaire approfondi</li>
+                        <li class="valid">Coaching mental & préparation mentale</li>
+                    </ul>
+                    <a href="#" class="openPopupBtn cta-button">Me contacter !</a>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Pop-up pour le formulaire de contact -->
+    <div id="contactPopup" class="popup-overlay">
+        <div class="popup-container">
+            <div class="popup-header">
+                <h3>Contactez-nous</h3>
+                <span class="close-popup">&times;</span>
+            </div>
+            <form id="contactForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="subject">Titre</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Annuler</button>
+                    <button type="button" onclick="sendEmailRequest()" class="btn-submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <section class="testimonials">
         <h2>Avis Clients</h2>
@@ -105,25 +109,33 @@
             <div class="testimonial-card">
                 <img src="/api/placeholder/80/80" alt="Photo de Marie L." class="testimonial-photo">
                 <h3 class="testimonial-title">Perte de poids réussie</h3>
-                <p class="testimonial-text">"Un coach exceptionnel qui m'a aidée à atteindre mes objectifs en 3 mois ! J'ai perdu 10 kilos et retrouvé une énergie que je n'avais plus depuis des années. L'approche personnalisée fait toute la différence."</p>
+                <p class="testimonial-text">"Un coach exceptionnel qui m'a aidée à atteindre mes objectifs en 3 mois !
+                    J'ai perdu 10 kilos et retrouvé une énergie que je n'avais plus depuis des années. L'approche
+                    personnalisée fait toute la différence."</p>
                 <p class="testimonial-author">Marie L.</p>
             </div>
             <div class="testimonial-card">
                 <img src="/api/placeholder/80/80" alt="Photo de Thomas R." class="testimonial-photo">
                 <h3 class="testimonial-title">Préparation marathon</h3>
-                <p class="testimonial-text">"Très professionnel et à l'écoute. Je recommande vivement ! Grâce à son programme d'entraînement sur mesure, j'ai pu courir mon premier marathon avec une préparation optimale et sans blessure."</p>
+                <p class="testimonial-text">"Très professionnel et à l'écoute. Je recommande vivement ! Grâce à son
+                    programme d'entraînement sur mesure, j'ai pu courir mon premier marathon avec une préparation
+                    optimale et sans blessure."</p>
                 <p class="testimonial-author">Thomas R.</p>
             </div>
             <div class="testimonial-card">
                 <img src="/api/placeholder/80/80" alt="Photo de Sophie M." class="testimonial-photo">
                 <h3 class="testimonial-title">Remise en forme post-grossesse</h3>
-                <p class="testimonial-text">"Grâce à son programme personnalisé, j'ai retrouvé la forme et la motivation après ma grossesse. Les exercices adaptés et le suivi nutritionnel m'ont permis de retrouver mon corps d'avant en douceur."</p>
+                <p class="testimonial-text">"Grâce à son programme personnalisé, j'ai retrouvé la forme et la motivation
+                    après ma grossesse. Les exercices adaptés et le suivi nutritionnel m'ont permis de retrouver mon
+                    corps d'avant en douceur."</p>
                 <p class="testimonial-author">Sophie M.</p>
             </div>
             <div class="testimonial-card">
                 <img src="/api/placeholder/80/80" alt="Photo de Pierre D." class="testimonial-photo">
                 <h3 class="testimonial-title">Musculation et performance</h3>
-                <p class="testimonial-text">"Un accompagnement de qualité et des résultats au rendez-vous. En six mois, j'ai gagné en masse musculaire tout en améliorant mes performances sportives. Les conseils nutritionnels ont été déterminants."</p>
+                <p class="testimonial-text">"Un accompagnement de qualité et des résultats au rendez-vous. En six mois,
+                    j'ai gagné en masse musculaire tout en améliorant mes performances sportives. Les conseils
+                    nutritionnels ont été déterminants."</p>
                 <p class="testimonial-author">Pierre D.</p>
             </div>
         </div>
@@ -136,7 +148,10 @@
             <div class="faq-item">
                 <div class="faq-question">Comment se déroule la première séance ?</div>
                 <div class="faq-answer">
-                    <p>La première séance est dédiée à un bilan complet : nous évaluons ensemble votre condition physique actuelle, vos objectifs et vos contraintes éventuelles. Cette étape est essentielle pour élaborer un programme personnalisé adapté à vos besoins. Prévoyez environ 1h30 pour cette séance d'évaluation.</p>
+                    <p>La première séance est dédiée à un bilan complet : nous évaluons ensemble votre condition
+                        physique actuelle, vos objectifs et vos contraintes éventuelles. Cette étape est essentielle
+                        pour élaborer un programme personnalisé adapté à vos besoins. Prévoyez environ 1h30 pour cette
+                        séance d'évaluation.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -155,19 +170,26 @@
             <div class="faq-item">
                 <div class="faq-question">Faut-il déjà être sportif pour commencer ?</div>
                 <div class="faq-answer">
-                    <p>Absolument pas ! Nos programmes sont adaptés à tous les niveaux, du débutant complet au sportif confirmé. L'important est votre motivation et votre régularité. Nous ajustons l'intensité et la difficulté des exercices en fonction de votre niveau et de votre progression.</p>
+                    <p>Absolument pas ! Nos programmes sont adaptés à tous les niveaux, du débutant complet au sportif
+                        confirmé. L'important est votre motivation et votre régularité. Nous ajustons l'intensité et la
+                        difficulté des exercices en fonction de votre niveau et de votre progression.</p>
                 </div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Proposez-vous un suivi nutritionnel ?</div>
                 <div class="faq-answer">
-                    <p>Oui, le suivi nutritionnel fait partie intégrante de notre approche. Nous vous proposons des conseils personnalisés et un plan alimentaire adapté à vos objectifs et à vos habitudes. Ce suivi peut être inclus dans certaines formules ou ajouté en option (90€/mois pour le suivi nutritionnel seul).</p>
+                    <p>Oui, le suivi nutritionnel fait partie intégrante de notre approche. Nous vous proposons des
+                        conseils personnalisés et un plan alimentaire adapté à vos objectifs et à vos habitudes. Ce
+                        suivi peut être inclus dans certaines formules ou ajouté en option (90€/mois pour le suivi
+                        nutritionnel seul).</p>
                 </div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Où se déroulent les séances d'entraînement ?</div>
                 <div class="faq-answer">
-                    <p>Nous disposons d'une salle d'entraînement équipée dans le centre-ville. Nous proposons également des séances à domicile ou en extérieur (parcs, jardins publics) selon vos préférences. Le lieu est à définir ensemble en fonction de vos besoins et de votre localisation.</p>
+                    <p>Nous disposons d'une salle d'entraînement équipée dans le centre-ville. Nous proposons également
+                        des séances à domicile ou en extérieur (parcs, jardins publics) selon vos préférences. Le lieu
+                        est à définir ensemble en fonction de vos besoins et de votre localisation.</p>
                 </div>
             </div>
         </div>
@@ -194,107 +216,5 @@
         </div>
     </div>
 </footer>
-
-<script>
-    // Script pour la fonctionnalité d'accordéon de la FAQ
-    document.addEventListener('DOMContentLoaded', function() {
-        const faqQuestions = document.querySelectorAll('.faq-question');
-
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                const faqItem = this.parentNode;
-
-                // Ferme tous les autres items ouverts
-                document.querySelectorAll('.faq-item.active').forEach(item => {
-                    if (item !== faqItem) {
-                        item.classList.remove('active');
-                    }
-                });
-
-                // Bascule l'état actif de l'item cliqué
-                faqItem.classList.toggle('active');
-            });
-        });
-    });
-
-    function sendEmailRequest() {
-        const url = "http://localhost:8080/sendmail"; // URL de l'API
-
-        const subject = document.getElementById("subject").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        // Ajouter un indicateur visuel que la requête est en cours (optionnel)
-        const submitBtn = document.querySelector(".btn-submit");
-        if (submitBtn) submitBtn.disabled = true;
-
-        fetch(url, {
-            method: "POST", // Changé de GET à POST
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ title: subject, message: message }) // Adapté aux attentes du backend
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Email envoyé avec succès:", data);
-                // Fermer la popup après succès
-                document.getElementById("contactPopup").style.display = 'none';
-                document.body.style.overflow = 'auto';
-
-                // Réinitialiser le formulaire
-                document.getElementById("contactForm").reset();
-            })
-            .catch(error => {
-                console.error("Erreur lors de l'envoi:", error);
-                alert("Une erreur s'est produite lors de l'envoi du message.");
-            })
-            .finally(() => {
-                // Réactiver le bouton dans tous les cas
-                if (submitBtn) submitBtn.disabled = false;
-            });
-    }
-
-    // Script pour la pop-up de contact
-    document.addEventListener('DOMContentLoaded', function() {
-        // Éléments
-        const popup = document.getElementById('contactPopup');
-        const openBtn = document.getElementById('openPopupBtn');
-        const closePopup = document.querySelector('.close-popup');
-        const cancelBtn = document.querySelector('.btn-cancel');
-
-        // Ouvrir la pop-up
-        openBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            popup.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Empêche le défilement
-        });
-
-        // Fermer la pop-up - X
-        closePopup.addEventListener('click', function() {
-            popup.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Réactive le défilement
-        });
-
-        // Fermer la pop-up - Bouton annuler
-        cancelBtn.addEventListener('click', function() {
-            popup.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Réactive le défilement
-        });
-
-        // Fermer en cliquant en dehors
-        popup.addEventListener('click', function(e) {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Réactive le défilement
-            }
-        });
-    });
-
-</script>
 </body>
 </html>
