@@ -252,7 +252,7 @@ h2 {
 /* Footer */
 footer {
     position: relative;
-    background: url('img/footer-background.jpg') center/cover no-repeat;
+    background: url('img/footer-background.jpg') center top -600px / cover no-repeat;
     color: white;
     padding: 4rem 2rem 2rem;
     margin-top: 2rem;
