@@ -1,0 +1,4 @@
+;/*FB_PKG_DELIM*/
+
+__d("IGDMqttIrisSubscriptionQuery$Parameters",["IGDMqttIrisSubscriptionQuery_instagramRelayOperation"],(function(a,b,c,d,e,f){"use strict";a={kind:"PreloadableConcreteRequest",params:{id:b("IGDMqttIrisSubscriptionQuery_instagramRelayOperation"),metadata:{},name:"IGDMqttIrisSubscriptionQuery",operationKind:"query",text:null}};e.exports=a}),null);
+__d("PolarisViewerSettingsContextProviderQuery$Parameters",["PolarisViewerSettingsContextProviderQuery_instagramRelayOperation"],(function(a,b,c,d,e,f){"use strict";a={kind:"PreloadableConcreteRequest",params:{id:b("PolarisViewerSettingsContextProviderQuery_instagramRelayOperation"),metadata:{},name:"PolarisViewerSettingsContextProviderQuery",operationKind:"query",text:null}};e.exports=a}),null);
