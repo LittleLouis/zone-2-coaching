@@ -1,0 +1,489 @@
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5; /* Un gris clair doux */
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    position: relative;
+    background: url('img/header-background.jpg') center/cover no-repeat;
+    color: white;
+    padding: 4rem 2rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+
+    /* Masque de fondu vers transparent */
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+/* Dégradé fondu en bas */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, white 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 0;
+}
+
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Pour que le contenu reste au-dessus du fondu */
+.header-left,
+nav {
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #4a90e2;
+}
+
+
+/* Sections principales */
+.section {
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section.reverse {
+    flex-direction: row-reverse;
+}
+
+.section-content {
+    flex: 1;
+}
+
+.section img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #222;
+}
+
+/* Témoignages */
+.testimonials {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial-card {
+    min-width: 300px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #f0f0f0;
+}
+
+.testimonial-title {
+    color: #444;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.testimonial-text {
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: #666;
+    align-self: flex-end;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    background: url('img/footer-background.jpg') center top -600px / cover no-repeat;
+    color: white;
+    padding: 4rem 2rem 2rem;
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+/* Dégradé fondu en haut */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, rgba(0,0,0,0) 0%, white 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Pour s'assurer que le contenu reste lisible et au-dessus du fondu */
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Tarifs */
+.pricing-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pricing-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li::before {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.pricing-features li.valid::before {
+    content: "✓"; /* Coche verte */
+    color: #4a90e2; /* Vert */
+}
+
+.pricing-features li.invalid::before {
+    content: "✗"; /* Croix rouge */
+    color: #e94f4f; /* Rouge */
+}
+
+.pricing-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.cta-button {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.pricing-box {
+    flex: 1;
+    min-width: 250px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.pricing-box:hover {
+    transform: translateY(-5px);
+}
+
+.pricing-box h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-features {
+    list-style-type: none;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li::before {
+    content: "✓";
+    color: #4a90e2;
+    margin-right: 8px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #555;
+}
+
+/* Styles pour la pop-up de contact */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Effet brumeux */
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: popupFadeIn 0.3s ease;
+}
+
+@keyframes popupFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.popup-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.close-popup {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.3s;
+}
+
+.close-popup:hover {
+    color: #333;
+}
+
+#contactForm {
+    padding: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #888;
+    box-shadow: 0 0 0 2px rgba(51,51,51,0.1);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-cancel,
+.btn-submit {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-cancel {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-submit {
+    background-color: #333;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #555;
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    nav {
+        margin-top: 1rem;
+    }
+
+    .section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+
+    .section.reverse {
+        flex-direction: column;
+    }
+
+    .section img {
+        width: 100%;
+        height: auto;
+    }
+
+    .testimonial-card {
+        min-width: 250px;
+    }
+
+    .faq-section {
+        padding: 2rem 1rem;
+    }
+
+    /* Responsive pour les prix */
+    .pricing-grid {
+        flex-direction: column;
+    }
+
+    .pricing-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
