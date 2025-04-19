@@ -154,7 +154,7 @@ footer::before {
 
 .cta-button {
     margin-top: auto;
-    align-self: flex-start;
+    align-self: center;
 }
 
 .cta-button {
@@ -169,7 +169,7 @@ footer::before {
 }
 
 .cta-button:hover {
-    background-color: #555;
+    background-color: #009847;
 }
 
 /* Styles pour la pop-up de contact */
