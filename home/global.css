@@ -226,6 +226,7 @@ footer::before {
 
 #contactForm {
     padding: 1.5rem;
+    justify-content: center;
 }
 
 .form-group {
