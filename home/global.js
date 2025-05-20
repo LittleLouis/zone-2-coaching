@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function sendEmailRequest() {
+window.sendEmailRequest = function sendEmailRequest() {
     const url = "http://localhost:8080/sendmail"; // URL de l'API
 
     const subject = document.getElementById("subject").value.trim();
