@@ -5,11 +5,13 @@ use axum::{
 use axum::handler::HandlerWithoutStateExt;
 use axum::http::{Method, StatusCode, Uri};
 use axum::http::header::CONTENT_TYPE;
+use axum::routing::get;
 use axum_limit::LimitState;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
 use tracing::log::{info};
+use crate::routes::image::get_carrousel_images;
 use crate::routes::mail::send_mail;
 
 pub async fn start_server() {
@@ -29,6 +31,7 @@ pub async fn start_server() {
             .append_index_html_on_directories(true)
             .not_found_service(service_not_found))
         .route("/sendmail", post(send_mail))
+        .route("/getcarrouselimages", get(get_carrousel_images))
         .with_state(LimitState::<Uri>::default())
         .layer(TraceLayer::new_for_http())
         .layer(cors);

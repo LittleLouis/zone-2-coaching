@@ -1,45 +1,14 @@
 use axum::{
-    http::StatusCode,
-    response::{IntoResponse, Response},
     Json,
 };
 use axum::http::Uri;
 use axum_limit::LimitPerSecond;
-use serde_json::json;
 use tracing::{error, info};
 
 use crate::models::mail::{EmailConfig, MailModel};
+use crate::routes::api::ApiResponse;
 use crate::services::mail::send_email;
 
-// Structure pour la réponse API
-pub struct ApiResponse {
-    status_code: StatusCode,
-    body: Json<serde_json::Value>,
-}
-
-impl ApiResponse {
-    fn success(message: &str) -> Self {
-        ApiResponse {
-            status_code: StatusCode::OK,
-            body: Json(json!({ "status": "success", "message": message })),
-        }
-    }
-
-    fn error(message: &str) -> Self {
-        error!("Erreur d'envoi d'email: {}", message);
-
-        ApiResponse {
-            status_code: StatusCode::INTERNAL_SERVER_ERROR,
-            body: Json(json!({ "status": "error", "message": message })),
-        }
-    }
-}
-
-impl IntoResponse for ApiResponse {
-    fn into_response(self) -> Response {
-        (self.status_code, self.body).into_response()
-    }
-}
 
 pub async fn send_mail(
     _: LimitPerSecond<1, Uri>, Json(email_form): Json<MailModel>

@@ -1,203 +1,203 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Configuration
-    const imagesPerView = window.innerWidth <= 480 ? 1 : (window.innerWidth <= 768 ? 2 : 3);
+    const carouselContainer = document.querySelector('.carousel-container');
+    const carousel = document.querySelector('.carousel');
+    const loadingElement = document.getElementById('loading');
+    const errorElement = document.getElementById('error');
+    const indicatorsContainer = document.querySelector('.indicators');
 
-    // Chemin vers le dossier contenant vos images
-    const imageFolderPath = './components/carrousel/imgs/'; // Ajustez ce chemin selon votre structure de dossier
-
-    // Liste des noms de fichiers d'images (à remplir manuellement)
-    const imageFilenames = [
-        'image1.png',
-        'image2.png',
-        'image3.png',
-        'image4.png',
-        'image5.png',
-        'image6.png',
-        'image7.png',
-        'image8.png',
-        'image9.png',
-        'image10.png',
-        'image11.png',
-        'image12.png',
-        'image13.png',
-        'image14.png',
-        'image15.png',
-        'image16.png',
-        'image17.png',
-        'image18.png',
-        // Ajoutez ou retirez des noms de fichiers selon vos besoins
-    ];
-
-    const totalImages = imageFilenames.length;
-    const images = [];
-
-    // Référence aux éléments DOM
-    const carouselTrack = document.getElementById('carouselTrack');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-
-    // Générer les éléments d'image
-    for (let i = 0; i < totalImages; i++) {
-        const slide = document.createElement('div');
-        slide.className = 'carousel-slide';
-
-        const img = document.createElement('img');
-        img.className = 'carousel-image';
-        img.src = imageFolderPath + imageFilenames[i];
-        img.alt = `Image ${i + 1}`;
-
-        slide.appendChild(img);
-        carouselTrack.appendChild(slide);
-        images.push(slide);
-    }
-
-    // Créer des clones pour l'effet de boucle infinie
-    function createClones() {
-        // Clones pour le début
-        for (let i = totalImages - imagesPerView; i < totalImages; i++) {
-            const clone = images[i].cloneNode(true);
-            clone.classList.add('clone');
-            carouselTrack.insertBefore(clone, carouselTrack.firstChild);
-        }
-
-        // Clones pour la fin
-        for (let i = 0; i < imagesPerView; i++) {
-            const clone = images[i].cloneNode(true);
-            clone.classList.add('clone');
-            carouselTrack.appendChild(clone);
-        }
-    }
-
-    createClones();
-
-    // Variables pour le tracking
     let currentIndex = 0;
-    let slideWidth = images[0].offsetWidth;
+    let totalItems = 0;
+    let autoSlideInterval;
 
-    // Positionner initialement le carousel
-    function setInitialPosition() {
-        slideWidth = images[0].offsetWidth;
-        carouselTrack.style.transform = `translateX(-${(imagesPerView) * slideWidth}px)`;
-    }
+    // Fonction pour récupérer les images depuis l'API
+    async function fetchImagesFromAPI() {
+        try {
+            // Remplacez cette URL par l'URL réelle de votre API
+            const apiUrl = 'http://localhost:8080/getcarrouselimages';
 
-    setInitialPosition();
-
-    // Ajouter la classe active à l'image centrale
-    function updateActiveSlides() {
-        const slides = document.querySelectorAll('.carousel-slide');
-        slides.forEach(slide => slide.classList.remove('active'));
-
-        // Calculer l'index de l'élément central
-        const centerIndex = imagesPerView + currentIndex;
-
-        if (slides[centerIndex]) {
-            slides[centerIndex].classList.add('active');
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error('Erreur lors de la récupération des images');
+            const responseData = await response.json();
+            return responseData.data;
+        } catch (error) {
+            console.error('Erreur lors de la récupération des images:', error);
+            throw error;
         }
     }
 
-    updateActiveSlides();
+    // Fonction pour initialiser le carrousel avec les images de l'API
+    async function initCarouselWithApiData() {
+        try {
+            // Récupérer les images depuis l'API
+            const images = await fetchImagesFromAPI();
+            console.log(images)
+            if (!images || images.length === 0) {
+                throw new Error('Aucune image trouvée');
+            }
 
-    // Gestion du défilement
+            totalItems = images.length;
+
+            // Masquer le message de chargement
+            loadingElement.style.display = 'none';
+
+            // Ajouter les images au carrousel
+            createCarouselItems(images);
+
+            // Afficher le carrousel
+            carousel.style.display = 'flex';
+
+            // Initialiser le carrousel
+            setupInfiniteCarousel();
+            createIndicators();
+            handleInfiniteTransition();
+
+            // Démarrer le défilement automatique
+            startAutoSlide();
+        } catch (error) {
+            // Afficher le message d'erreur
+            loadingElement.style.display = 'none';
+            errorElement.style.display = 'block';
+            errorElement.textContent = 'Erreur: ' + error.message;
+        }
+    }
+
+    // Fonction pour créer les éléments du carrousel à partir des données de l'API
+    function createCarouselItems(images) {
+        // Ajouter d'abord le dernier élément au début pour le défilement infini
+        const lastItemDiv = document.createElement('div');
+        lastItemDiv.classList.add('carousel-item');
+        lastItemDiv.innerHTML = `<img src="./${images[images.length - 1].path}" alt="${images[images.length - 1].name}">`;
+        carousel.appendChild(lastItemDiv);
+
+        // Ajouter tous les éléments originaux
+        images.forEach((image, index) => {
+            const div = document.createElement('div');
+            div.classList.add('carousel-item');
+            if (index === 0) div.classList.add('center');
+            console.log(`<img src="./${image.path}" alt="${image.name}">`)
+            div.innerHTML = `<img src="./${image.path}" alt="${image.name}">`;
+            carousel.appendChild(div);
+        });
+
+        // Ensuite, cloner le premier élément et l'ajouter à la fin
+        const firstItemDiv = document.createElement('div');
+        firstItemDiv.classList.add('carousel-item');
+        firstItemDiv.innerHTML = `<img src="${images[0].path}" alt="${images[0].name}">`;
+        carousel.appendChild(firstItemDiv);
+    }
+
+    // Fonction pour configurer le carrousel infini
+    function setupInfiniteCarousel() {
+        // Positionner initialement le carrousel
+        updateCarouselPosition(false);
+    }
+
+    // Créer les indicateurs
+    function createIndicators() {
+        for (let i = 0; i < totalItems; i++) {
+            const indicator = document.createElement('div');
+            indicator.classList.add('indicator');
+            indicator.addEventListener('click', () => {
+                goToSlide(i);
+            });
+            indicatorsContainer.appendChild(indicator);
+        }
+        updateIndicators();
+    }
+
+    // Mettre à jour les indicateurs
+    function updateIndicators() {
+        const indicators = document.querySelectorAll('.indicator');
+        indicators.forEach((indicator, index) => {
+            indicator.classList.remove('active');
+            if (index === currentIndex % totalItems) {
+                indicator.classList.add('active');
+            }
+        });
+    }
+
+    // Mettre à jour la position du carrousel
+    function updateCarouselPosition(animate = true) {
+        // Calculer la position à partir de l'index actuel
+        const translateX = -(currentIndex + 1) * (100 / 3);
+
+        // Appliquer la transition seulement quand c'est demandé
+        if (!animate) {
+            carousel.style.transition = 'none';
+        } else {
+            carousel.style.transition = 'transform 0.5s ease';
+        }
+
+        carousel.style.transform = `translateX(${translateX}%)`;
+        updateActiveItems();
+        updateIndicators();
+    }
+
+    // Mettre à jour les éléments actifs
+    function updateActiveItems() {
+        const allItems = document.querySelectorAll('.carousel-item');
+        allItems.forEach((item, index) => {
+            item.classList.remove('center');
+
+            // Déterminer quelle image doit être au centre
+            // L'élément du milieu est toujours à index + 1 (car on a un élément à gauche)
+            if ((index - 1) % totalItems === currentIndex % totalItems ||
+                (index - 1 - totalItems) % totalItems === currentIndex % totalItems ||
+                (index - 1 + totalItems) % totalItems === currentIndex % totalItems) {
+                item.classList.add('center');
+            }
+        });
+    }
+
+    // Passer à la diapositive suivante
+    function nextSlide() {
+        currentIndex++;
+        updateCarouselPosition();
+    }
+
+    // Aller à une diapositive spécifique
     function goToSlide(index) {
         currentIndex = index;
-
-        if (currentIndex < 0) {
-            currentIndex = totalImages - 1;
-            // Transition instantanée à la fin
-            carouselTrack.style.transition = 'none';
-            carouselTrack.style.transform = `translateX(-${(imagesPerView + totalImages) * slideWidth}px)`;
-
-            // Force reflow
-            carouselTrack.offsetHeight;
-
-            // Réactiver la transition
-            setTimeout(() => {
-                carouselTrack.style.transition = 'transform 0.5s ease';
-                goToSlide(totalImages - 1);
-            }, 10);
-            return;
-        }
-
-        if (currentIndex >= totalImages) {
-            currentIndex = 0;
-            // Transition instantanée au début
-            carouselTrack.style.transition = 'none';
-            carouselTrack.style.transform = `translateX(-${imagesPerView * slideWidth}px)`;
-
-            // Force reflow
-            carouselTrack.offsetHeight;
-
-            // Réactiver la transition
-            setTimeout(() => {
-                carouselTrack.style.transition = 'transform 0.5s ease';
-                goToSlide(0);
-            }, 10);
-            return;
-        }
-
-        carouselTrack.style.transform = `translateX(-${(imagesPerView + currentIndex) * slideWidth}px)`;
-        updateActiveSlides();
+        updateCarouselPosition();
     }
 
-    // Event listeners pour les boutons
-    prevButton.addEventListener('click', () => goToSlide(currentIndex - 1));
-    nextButton.addEventListener('click', () => goToSlide(currentIndex + 1));
+    // Gérer la transition infinie
+    function handleInfiniteTransition() {
+        carousel.addEventListener('transitionend', function() {
+            // Si nous avons défilé au-delà du dernier clone
+            if (currentIndex >= totalItems) {
+                // Revenir silencieusement au début réel
+                carousel.style.transition = 'none';
+                currentIndex = currentIndex % totalItems;
+                updateCarouselPosition(false);
 
-// Fonction pour le défilement automatique
+                // Réactiver les transitions après un court délai
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                }, 10);
+            }
+
+            // Si nous avons défilé avant le premier élément
+            if (currentIndex < 0) {
+                // Revenir silencieusement à la fin réelle
+                carousel.style.transition = 'none';
+                currentIndex = totalItems - 1;
+                updateCarouselPosition(false);
+
+                // Réactiver les transitions après un court délai
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                }, 10);
+            }
+        });
+    }
+
+    // Démarrer le défilement automatique
     function startAutoSlide() {
-        return setInterval(() => {
-            goToSlide(currentIndex + 1);
-        }, 2500); // 2,5 secondes
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 4000); // 4 secondes
     }
 
-// Variable pour stocker l'intervalle
-    let autoSlideInterval = startAutoSlide();
-
-// Arrêter le défilement automatique lorsque l'utilisateur interagit avec le carrousel
-    prevButton.addEventListener('click', () => {
-        clearInterval(autoSlideInterval);
-        goToSlide(currentIndex - 1);
-        // Redémarrer après un délai
-        setTimeout(() => {
-            autoSlideInterval = startAutoSlide();
-        }, 5000); // Redémarrer après 5 secondes d'inactivité
-    });
-
-    nextButton.addEventListener('click', () => {
-        clearInterval(autoSlideInterval);
-        goToSlide(currentIndex + 1);
-        // Redémarrer après un délai
-        setTimeout(() => {
-            autoSlideInterval = startAutoSlide();
-        }, 5000); // Redémarrer après 5 secondes d'inactivité
-    });
-
-// Pause au survol (optionnel)
-    carouselTrack.addEventListener('mouseenter', () => {
-        clearInterval(autoSlideInterval);
-    });
-
-    carouselTrack.addEventListener('mouseleave', () => {
-        autoSlideInterval = startAutoSlide();
-    });
-
-    // Gérer le redimensionnement de la fenêtre
-    window.addEventListener('resize', () => {
-        slideWidth = images[0].offsetWidth;
-        goToSlide(currentIndex);
-    });
-
-    // Transition terminée
-    carouselTrack.addEventListener('transitionend', () => {
-        if (currentIndex === -1) {
-            carouselTrack.style.transition = 'none';
-            currentIndex = totalImages - 1;
-            carouselTrack.style.transform = `translateX(-${(imagesPerView + currentIndex) * slideWidth}px)`;
-        }
-        if (currentIndex === totalImages) {
-            carouselTrack.style.transition = 'none';
-            currentIndex = 0;
-            carouselTrack.style.transform = `translateX(-${(imagesPerView + currentIndex) * slideWidth}px)`;
-        }
-    });
+    // Initialiser le carrousel avec les données de l'API
+    initCarouselWithApiData();
 });
