@@ -12,10 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour récupérer les images depuis l'API
     async function fetchImagesFromAPI() {
         try {
-            // Remplacez cette URL par l'URL réelle de votre API
-            const apiUrl = 'http://localhost:8080/getcarrouselimages';
-
-            const response = await fetch(apiUrl);
+            const response = await fetch('/getcarrouselimages');
             if (!response.ok) throw new Error('Erreur lors de la récupération des images');
             const responseData = await response.json();
             return responseData.data;

@@ -49,8 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.sendEmailRequest = function sendEmailRequest() {
-    const url = "http://localhost:8080/sendmail"; // URL de l'API
-
     const subject = document.getElementById("subject").value.trim();
     const message = document.getElementById("message").value.trim();
 
@@ -58,7 +56,7 @@ window.sendEmailRequest = function sendEmailRequest() {
     const submitBtn = document.querySelector(".btn-submit");
     if (submitBtn) submitBtn.disabled = true;
 
-    fetch(url, {
+    fetch('/sendmail', {
         method: "POST", // Changé de GET à POST
         headers: {
             "Content-Type": "application/json"
