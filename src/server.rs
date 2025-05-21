@@ -37,10 +37,10 @@ pub async fn start_server() {
         .layer(cors);
     info!("Routes configurées");
 
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:8080")
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:8080")
         .await
         .unwrap();
-    info!("Serveur démarré sur 8080");
+    info!("Serveur démarré sur 0.0.0.0:8080");
 
     axum::serve(listener, app).await.unwrap();
 }
