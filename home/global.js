@@ -48,7 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.sendEmailRequest = function sendEmailRequest() {
-    const subject = document.getElementById("subject").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const surname = document.getElementById("surname").value.trim();
+    const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
 
     // Ajouter un indicateur visuel que la requête est en cours (optionnel)
@@ -60,7 +62,7 @@ window.sendEmailRequest = function sendEmailRequest() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({title: subject, message: message}) // Adapté aux attentes du backend
+        body: JSON.stringify({name: name, surname: surname, email:email, message: message})
     })
         .then(response => {
             if (!response.ok) {

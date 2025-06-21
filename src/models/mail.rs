@@ -2,7 +2,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize)]
 pub struct MailModel {
-    pub title: String,
+    pub name: String,
+    pub surname: String,
+    pub email: String,
     pub message: String,
 }
 

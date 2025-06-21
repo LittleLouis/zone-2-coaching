@@ -343,7 +343,8 @@ footer::before {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #4a90e2;
+    backdrop-filter: blur(2px); /* flou */
+    background-color: rgba(74, 74, 74, 0.7); /* couleur semi-transparente */
     color: white;
     text-align: center;
     padding: 1rem;
@@ -360,5 +361,6 @@ footer::before {
 }
 
 body {
-    padding-bottom: 60px; /* pour que le contenu ne soit pas masqué par le bandeau */
+    display: flex;
+    flex-direction: column;
 }

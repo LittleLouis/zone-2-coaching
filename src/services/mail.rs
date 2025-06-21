@@ -9,8 +9,10 @@ use crate::models::mail::EmailConfig;
 
 pub fn send_email(
     config: &EmailConfig,
-    subject: &str,
-    body: &str,
+    name: &str,
+    surname: &str,
+    email: &str,
+    message: &str
 ) -> Result<(), String> {
     debug!("Analyse des adresses email...");
 
@@ -31,9 +33,9 @@ pub fn send_email(
         .from(from_address)
         .reply_to(reply_to_address)
         .to(to_address)
-        .subject(subject)
+        .subject(format!("Zone 2 coaching - Demande de contacte {} {}", name, surname))
         .header(ContentType::TEXT_PLAIN)
-        .body(body.to_string())
+        .body(format!("{}\n Email de l'expéditeur/trice{}", message, email))
         .map_err(|e| format!("Échec de la création de l'email: {}", e))?;
 
     debug!("Configuration du transport SMTP pour {}:{}...", config.smtp_server, config.smtp_port);

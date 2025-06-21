@@ -13,15 +13,20 @@ use crate::services::mail::send_email;
 pub async fn send_mail(
     _: LimitPerSecond<1, Uri>, Json(email_form): Json<MailModel>
 ) -> Result<ApiResponse, ApiResponse> {
-    info!("Envoi d'email - Titre: '{}', Message: '{}'", email_form.title, email_form.message);
+    info!("Envoi d'email - Nom: '{}', Prénom: '{}', Email: '{}', Message: '{}'", email_form.name, email_form.surname, email_form.email, email_form.message);
 
     // Validation des entrées
-    if email_form.title.trim().is_empty() {
-        return Err(ApiResponse::error("Le titre de l'email est vide"));
+    if email_form.name.trim().is_empty() {
+        return Err(ApiResponse::error("Le nom renseigné est vide"));
     }
-
+    if email_form.email.trim().is_empty() {
+        return Err(ApiResponse::error("Le mail renseigné est vide"));
+    }
+    if email_form.surname.trim().is_empty() {
+        return Err(ApiResponse::error("Le prénom renseigné est vide"));
+    }
     if email_form.message.trim().is_empty() {
-        return Err(ApiResponse::error("Le message de l'email est vide"));
+        return Err(ApiResponse::error("Le message renseigné vide"));
     }
 
     // Configuration des adresses email
@@ -36,9 +41,9 @@ pub async fn send_mail(
     };
 
     // Création et envoi de l'email
-    match send_email(&config, &email_form.title, &email_form.message) {
+    match send_email(&config, &email_form.name, &email_form.surname, &email_form.email, &email_form.message) {
         Ok(_) => {
-            info!("Email envoyé avec succès: titre='{}', destinataire='{}'", email_form.title, config.to);
+            info!("Email envoyé avec succès: nom de l'expéditeur='{}', destinataire='{}'", email_form.name, config.to);
             Ok(ApiResponse::success("Email envoyé avec succès"))
         },
         Err(err) => {
