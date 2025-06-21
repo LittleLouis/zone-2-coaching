@@ -9,14 +9,15 @@
 
 .common-container {
     display: flex;
-    flex-wrap: wrap; /* permet de passer à la ligne sur petit écran */
-    justify-content: center; /* centre horizontalement */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     gap: 2rem;
     padding: 1rem;
 }
 
 .common-card {
     flex: 0 0 auto;
+    scroll-snap-align: center;
     padding: 2rem;
     background-color: white;
     border-radius: 8px;
@@ -28,19 +29,19 @@
     text-align: center;
 }
 
-.common-card-stats{
+.common-card-stats {
     width: 20%;
 }
 
-.common-card-services{
+.common-card-services {
     width: 30%;
 }
 
-.common-card-suivis{
+.common-card-suivis {
     width: 30%;
 }
 
-.common-card-testimony{
+.common-card-testimony {
     width: 20%;
 }
 
@@ -80,53 +81,45 @@
 }
 
 .pricing-features li.valid::before {
-    content: "✓"; /* Coche verte */
-    color: #4a90e2; /* Vert */
+    content: "✓";
+    color: #4a90e2;
 }
 
 .pricing-features li.invalid::before {
-    content: "✗"; /* Croix rouge */
-    color: #e94f4f; /* Rouge */
+    content: "✗";
+    color: #e94f4f;
 }
 
-.pricing-features li{
-    list-style: none
+.pricing-features li {
+    list-style: none;
 }
 
+.scroll-indicator {
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Media queries pour mobile */
 @media (max-width: 768px) {
     .common-container {
-        display: flex;
         flex-wrap: nowrap;
-        overflow-x: auto;
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
-        justify-content: flex-start;
-        padding-left: 1rem;
+        padding-left: calc(50vw - 175px); /* Centrer la première carte */
+        padding-right: 20px;
     }
 
-    .common-card {
-        margin-right: 1rem;
+    .common-card:last-child {
+        margin-right: calc(50vw - 175px); /* Assurer le centrage jusqu'à la fin */
     }
 
-    /* Centrer le premier élément */
-    .common-container::before {
-        content: "";
+    .common-card-testimony,
+    .common-card-stats,
+    .common-card-services,
+    .common-card-suivis {
+        width: 350px; /* Taille fixe sur mobile pour un meilleur contrôle */
+        min-width: 350px;
     }
-
-    .common-card-testimony{
-        width: 100%;
-    }
-
-    .common-card-stats{
-        width: 100%;
-    }
-
-    .common-card-services{
-        width: 100%;
-    }
-
-    .common-card-suivis{
-        width: 100%;
-    }
-
 }
