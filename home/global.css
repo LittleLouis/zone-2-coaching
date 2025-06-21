@@ -337,3 +337,28 @@ footer::before {
         margin-bottom: 20px;
     }
 }
+
+.sticky-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4a90e2;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+.sticky-banner a.cta-link {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 0.5rem;
+}
+
+body {
+    padding-bottom: 60px; /* pour que le contenu ne soit pas masqué par le bandeau */
+}

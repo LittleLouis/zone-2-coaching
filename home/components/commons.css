@@ -1,14 +1,14 @@
-.testimonials {
+.common {
     padding: 4rem 2rem;
     background-color: #f9f9f9;
 }
 
-.testimonials h2 {
+.common h2 {
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.testimonials-container {
+.common-container {
     display: flex;
     gap: 2rem;
     padding: 1rem;
@@ -17,7 +17,7 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.testimonial-card {
+.common-card {
     min-width: 300px;
     padding: 2rem;
     background-color: white;
@@ -30,11 +30,11 @@
     text-align: center;
 }
 
-.testimonial-card:hover {
+.common-card:hover {
     transform: translateY(-5px);
 }
 
-.testimonial-photo {
+.common-photo {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -43,18 +43,18 @@
     border: 3px solid #f0f0f0;
 }
 
-.testimonial-title {
+.common-title {
     color: #444;
     margin-bottom: 0.75rem;
     font-size: 1.2rem;
 }
 
-.testimonial-text {
+.common-text {
     margin-bottom: 1rem;
     font-style: italic;
 }
 
-.testimonial-author {
+.common-author {
     font-weight: bold;
     color: #666;
     align-self: flex-end;
@@ -63,4 +63,18 @@
 #contactForm {
     padding: 1.5rem;
     justify-content: center;
+}
+
+.pricing-features li.valid::before {
+    content: "✓"; /* Coche verte */
+    color: #4a90e2; /* Vert */
+}
+
+.pricing-features li.invalid::before {
+    content: "✗"; /* Croix rouge */
+    color: #e94f4f; /* Rouge */
+}
+
+.pricing-features li{
+    list-style: none
 }

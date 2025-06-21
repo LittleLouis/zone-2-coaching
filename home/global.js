@@ -1,6 +1,5 @@
 import './components/carrousel/carrousel.js';
 import './components/faq/faq.js'
-import './components/stats/stats.js'
 
 document.addEventListener('DOMContentLoaded', function () {
     const popup = document.getElementById('contactPopup');
