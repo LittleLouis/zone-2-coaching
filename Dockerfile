@@ -13,7 +13,7 @@ RUN tar -czf source.tar.gz home
 FROM debian:bookworm-slim
 
 # Installer les dépendances nécessaires (OpenSSL 3.x est inclus dans Bookworm)
-RUN apt-get update && apt-get install -y openssl libssl3
+RUN apt-get update && apt-get install -y openssl libssl3 ca-certificates
 
 # Copier l'exécutable depuis le builder
 COPY --from=builder /app/source.tar.gz /app/
