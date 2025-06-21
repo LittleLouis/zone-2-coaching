@@ -1,4 +1,52 @@
-/* Reset et styles de base */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    nav {
+        margin-top: 1rem;
+    }
+
+    .section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+
+    .section.reverse {
+        flex-direction: column;
+    }
+
+    .section img {
+        width: 100%;
+        height: auto;
+    }
+
+    .testimonial-card {
+        min-width: 250px;
+    }
+
+    .faq-section {
+        padding: 2rem 1rem;
+    }
+
+    /* Responsive pour les prix */
+    .pricing-grid {
+        flex-direction: column;
+    }
+
+    .pricing-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .common{
+        padding: 0;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -290,52 +338,6 @@ footer::before {
 
 .btn-submit:hover {
     background-color: #555;
-}
-
-/* Media Queries pour la responsivité */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    nav {
-        margin-top: 1rem;
-    }
-
-    .section {
-        flex-direction: column;
-        padding: 2rem 1rem;
-        gap: 2rem;
-    }
-
-    .section.reverse {
-        flex-direction: column;
-    }
-
-    .section img {
-        width: 100%;
-        height: auto;
-    }
-
-    .testimonial-card {
-        min-width: 250px;
-    }
-
-    .faq-section {
-        padding: 2rem 1rem;
-    }
-
-    /* Responsive pour les prix */
-    .pricing-grid {
-        flex-direction: column;
-    }
-
-    .pricing-box {
-        width: 100%;
-        margin-bottom: 20px;
-    }
 }
 
 .sticky-banner {
