@@ -13,6 +13,7 @@
     scroll-snap-type: x mandatory;
     gap: 2rem;
     padding: 1rem;
+    justify-content: center;
 }
 
 .common-card {
