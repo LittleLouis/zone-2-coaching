@@ -1,10 +1,10 @@
 .common {
     background-color: #f9f9f9;
+    padding-top: 2em;
 }
 
 .common h2 {
     text-align: center;
-    margin-bottom: 2rem;
 }
 
 .common-container {
@@ -12,14 +12,12 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 2rem;
-    padding: 1rem;
     justify-content: center;
 }
 
 .common-card {
     flex: 0 0 auto;
     scroll-snap-align: center;
-    padding: 2rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -28,6 +26,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1em;
 }
 
 .common-card-stats {
@@ -105,22 +104,37 @@
 /* Media queries pour mobile */
 @media (max-width: 768px) {
     .common-container {
+        /* Activation du scroll horizontal */
+        overflow-x: auto;
+        overflow-y: hidden;
         flex-wrap: nowrap;
+
+        /* Scroll fluide */
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
-        padding-left: calc(50vw - 175px); /* Centrer la première carte */
-        padding-right: 20px;
+
+        /* Centrage de la première carte */
+        padding-left: calc(50vw - 175px);
+        padding-right: calc(50vw - 175px);
+
+        /* Alignement pour le scroll */
+        justify-content: flex-start;
+
+        /* Masquer la scrollbar */
+        -webkit-scrollbar: none;
+        scrollbar-width: none;
     }
 
-    .common-card:last-child {
-        margin-right: calc(50vw - 175px); /* Assurer le centrage jusqu'à la fin */
+    .common-container::-webkit-scrollbar {
+        display: none;
     }
 
     .common-card-testimony,
     .common-card-stats,
     .common-card-services,
     .common-card-suivis {
-        width: 350px; /* Taille fixe sur mobile pour un meilleur contrôle */
+        flex: 0 0 350px;
+        width: 350px;
         min-width: 350px;
     }
 }
