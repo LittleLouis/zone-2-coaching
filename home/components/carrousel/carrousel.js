@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         images.forEach(image => {
             const div = document.createElement('div');
             div.classList.add('common-card');
-            div.innerHTML = `<img src="./${image.path}" alt="${image.name}">`;
+            div.innerHTML = `<img src="./${image.path}" alt="${image.name}" class="img-carrousel">`;
             carousel.appendChild(div);
         });
     }

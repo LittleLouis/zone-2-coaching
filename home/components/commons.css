@@ -101,6 +101,14 @@
     font-size: 0.9em;
 }
 
+.common-card-carrousel{
+    width: 20%;
+}
+
+.img-carrousel{
+    width: 20em;
+}
+
 /* Media queries pour mobile */
 @media (max-width: 768px) {
     .common-container {
@@ -138,3 +146,4 @@
         min-width: 350px;
     }
 }
+
