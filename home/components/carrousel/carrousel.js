@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.carousel-container');
+    const carousel = document.getElementById('carousel-container');
     const loadingElement = document.getElementById('loading');
     const errorElement = document.getElementById('error');
     let totalItems = 0;
@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Récupérer les images depuis l'API
             const images = await fetchImagesFromAPI();
-            console.log(images)
             if (!images || images.length === 0) {
                 throw new Error('Aucune image trouvée');
             }
