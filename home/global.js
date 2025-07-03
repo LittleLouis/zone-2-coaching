@@ -88,4 +88,3 @@ window.sendEmailRequest = function sendEmailRequest() {
             if (submitBtn) submitBtn.disabled = false;
         });
 }
-
