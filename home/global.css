@@ -314,9 +314,10 @@ body {
 #sticky-banner {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 10px;
+    z-index: 1000;
 }
 
 .common {
@@ -342,7 +343,6 @@ body {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -364,10 +364,6 @@ body {
 
 .common-card-testimony {
     width: 20%;
-}
-
-.common-card:hover {
-    transform: translateY(-5px);
 }
 
 .common-photo {
@@ -450,6 +446,15 @@ body {
 }
 
 @media (max-width: 768px) {
+    #sticky-banner.right-position {
+        right: 20px;
+        transform: none;
+    }
+
+    #main-title{
+        text-align: center;
+    }
+
     .dots-container {
         display: flex;
     }

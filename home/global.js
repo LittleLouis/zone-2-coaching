@@ -1,6 +1,27 @@
 import './components/carrousel/carrousel.js';
 import './components/faq/faq.js'
 
+
+function checkScrollPosition() {
+    const banner = document.getElementById('sticky-banner');
+    const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // Calculer si on est proche du bas (par exemple, à 80% de la page)
+    const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
+
+    if (scrollPercentage >= 0.95) {
+        banner.classList.add('right-position');
+    } else {
+        banner.classList.remove('right-position');
+    }
+}
+
+window.addEventListener('scroll', checkScrollPosition);
+window.addEventListener('load', checkScrollPosition);
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const popup = document.getElementById('contactPopup');
     const closePopup = document.querySelector('.close-popup');
