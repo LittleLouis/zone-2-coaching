@@ -76,7 +76,9 @@ window.sendEmailRequest = function sendEmailRequest() {
 
     // Ajouter un indicateur visuel que la requête est en cours (optionnel)
     const submitBtn = document.querySelector(".btn-submit");
-    if (submitBtn) submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Envoi<span class="dots-loader"></span>';
 
     fetch('/sendmail', {
         method: "POST", // Changé de GET à POST
@@ -93,11 +95,10 @@ window.sendEmailRequest = function sendEmailRequest() {
         })
         .then(data => {
             console.log("Email envoyé avec succès:", data);
-            // Fermer la popup après succès
             document.getElementById("contactPopup").style.display = 'none';
             document.body.style.overflow = 'auto';
 
-            // Réinitialiser le formulaire
+            alert("Email envoyé avec succès !");
             document.getElementById("contactForm").reset();
         })
         .catch(error => {
@@ -105,14 +106,14 @@ window.sendEmailRequest = function sendEmailRequest() {
             alert("Une erreur s'est produite lors de l'envoi du message.");
         })
         .finally(() => {
-            // Réactiver le bouton dans tous les cas
-            if (submitBtn) submitBtn.disabled = false;
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Envoyer';
         });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     class FlexiblePagination {
-        _;
         constructor(config) {
             this.sectionId = config.sectionId;
             this.cardSelector = config.cardSelector;

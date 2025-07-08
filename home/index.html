@@ -3,8 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coach Sportif - Votre Partenaire Fitness</title>
-    <meta name="description" content="Coaching personnalisé en triathlon, course à pied et préparation physique.">
+
+    <title>Zone 2 Coaching - Coach Sportif Triathlon et Course à Pied | Bastien Guilbaud</title>
+    <meta name="description" content="Coach sportif spécialisé en triathlon et course à pied. Suivi personnalisé, plans d'entraînement sur mesure et optimisation des performances. Contactez Bastien pour atteindre vos objectifs.">
+    <meta name="keywords" content="coach sportif, triathlon, course à pied, entraînement personnalisé, coaching sportif, préparation physique, zone 2">
+    <meta name="author" content="Bastien Guilbaud - Zone 2 Coaching">
+
+    <!-- Balises Open Graph pour réseaux sociaux -->
+    <meta property="og:title" content="Zone 2 Coaching - Coach Sportif Triathlon et Course à Pied">
+    <meta property="og:description" content="Coach sportif spécialisé en triathlon et course à pied. Suivi personnalisé pour tous niveaux.">
+    <meta property="og:image" content="img/logo.jpeg">
+    <meta property="og:url" content="https://zone-2-coaching.onrender.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Zone 2 Coaching">
+
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Zone 2 Coaching",
+            "description": "Coach sportif spécialisé en triathlon et course à pied",
+            "image": "img/logo.jpeg",
+            "founder": {
+                "@type": "Person",
+                "name": "Bastien Guilbaud"
+            },
+            "offers": [
+                {
+                    "@type": "Service",
+                    "name": "Plan d'entraînement 3 mois",
+                    "description": "Programme personnalisé avec suivi mensuel",
+                    "price": "90",
+                    "priceCurrency": "EUR"
+                },
+                {
+                    "@type": "Service",
+                    "name": "Suivi personnalisé Gold",
+                    "description": "Programme hebdomadaire avec retour hebdomadaire",
+                    "price": "150",
+                    "priceCurrency": "EUR"
+                },
+                {
+                    "@type": "Service",
+                    "name": "Suivi personnalisé Premium",
+                    "description": "Suivi quotidien avec échanges illimités",
+                    "price": "190",
+                    "priceCurrency": "EUR"
+                }
+            ],
+            "sameAs": [
+                "https://www.facebook.com/Zone2CoachingBastienGuilbaud",
+                "https://www.instagram.com/zone_2_coaching/"
+            ]
+        }
+    </script>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://votre-domaine.com">
+
     <script src="global.js" type="module"></script>
     <link rel="icon" type="image/png" href="img/logo.jpeg" />
     <link rel="stylesheet" href="global.css">
@@ -12,15 +69,25 @@
     <link rel="stylesheet" href="components/stats/stats.css">
 </head>
 <body>
-    <header>
-        <div class="header-left">
+    <header id="main-header">
+        <div id="header-left">
             <img src="img/logo.jpeg" alt="Logo" class="logo">
             <h1>Zone 2 coaching</h1>
         </div>
+
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li class="no-bullet-point"><a href="#coaching" title="Services de coaching sportif">Coaching</a></li>
+                <li class="no-bullet-point"><a href="#suivi" title="Plans d'entraînement personnalisés">Suivi</a></li>
+                <li class="no-bullet-point"><a href="#services" title="Autres services sportifs">Services</a></li>
+                <li class="no-bullet-point"><a href="#testimony" title="Témoignages clients">Témoignages</a></li>
+                <li class="no-bullet-point"><a href="#faq" title="Questions fréquentes">FAQ</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <section class="section">
+        <section id="coaching" class="section">
             <div class="section-content">
                 <h2 id="main-title">Bienvenue chez Zone 2 Coaching</h2>
                 <p>Quel que soit ton niveau ou ton expérience en sport d'endurance, un suivi personnalisé est souvent gage
@@ -38,98 +105,107 @@
         <section id="testimony" class="common">
             <h2>Témoignages</h2>
             <div class="common-container">
-                <div class="common-card common-card-testimony">
-                    <img src="components/testimony/imgs/Ben.png" alt="Photo de Ben" class="common-photo">
+                <article class="common-card common-card-testimony">
+                    <img src="components/testimony/imgs/Ben.png" alt="Benjamin B. - Athlète coaché triathlon" class="common-photo">
                     <h3 class="common-title">Objectif Norseman 2026</h3>
-                    <p class="common-text">"Bastien m'entraine depuis plusieurs mois maintenant, avec deux objectifs cette année : - Half de Aix en Provence sub 5h - Xtrem triathlon Blacklake (distance full, Qualif Norseman 2026) Bastien adapte parfaitement les séances et la charge d'entrainement à mon planning et à mes déplacements pro. Un vrai coach, au petit soin pour ses athlètes !"</p>
-                    <p class="common-author">Benjamin B.</p>
-                </div>
-                <div class="common-card common-card-testimony">
-                    <img src="components/testimony/imgs/Arsene.jpg" alt="Photo d'Arsène" class="common-photo">
-                    <h3 class="common-title">Optimisation et flexibilité</h3>
-                    <p class="common-text">"Bastien est un super entraineur qui fait progresser. Il est à l'écoute et disponible pour ajuster les entrainements et fonction de la forme ou des contraintes familliales ou professionnelles. Il fait des bons retours sur la bonne execution des entrainements pour maximiser le resultat. Avec lui j'ai fortement progressé en càp pour tomber sous les 1h30 sur semi et je suis bcp plus performant à vélo alors que c'est mon sport à la base. Moins de stress, moins de temps perdu sur les mauvais entrainements, un coach comme Bastien c'est plus d'énergie dans la bonne direction et de meilleurs résultats à la fin !"</p>
-                    <p class="common-author">Arsène F.</p>
-                </div>
-                <div class="common-card common-card-testimony">
-                    <img src="components/testimony/imgs/Clemence.jpg" alt="Photo de Clémence" class="common-photo">
-                    <h3 class="common-title">Individualisation et disponibilité</h3>
-                    <p class="common-text">"Je suis coachée par Bastien depuis septembre 2023. Je n'ai fais que progresser de par la régularité dans ma pratique mais aussi parce que tout à toujours été adapté (allures/récupérations/volume selon la période). J'apprécie beaucoup aussi les échanges que nous avons avant/après certaines séances clés. Je l'ai contacté pour un objectif en triathlon mais il a su aussi me faire des plans pour un 10kms, un semi et des défis en cyclisme. Je le recommande vivement !"</p>
-                    <p class="common-author">Clémence L.</p>
-                </div>
-                <div class="common-card common-card-testimony">
-                    <img src="components/testimony/imgs/Romain.jpg" alt="Photo de Romain" class="common-photo">
-                    <h3 class="common-title">Ecoute et pédagogie</h3>
-                    <p class="common-text">"Bastien est un un super coach! Il est à l'écoute et compétent. Grâce à lui, j'ai atteint mes objectifs et j'ai développé ma culture de l'entrainement. Il m'implique dans le processus et je comprends enfin ce que je fait à l'entrainement. Je recommande a 200%"</p>
-                    <p class="common-author">Romain B.</p>
-                </div>
+                    <p class="common-text">"Bastien m'entraîne depuis plusieurs mois maintenant, avec deux objectifs cette année : - Half de Aix en Provence sub 5h - Xtrem triathlon Blacklake (distance full, Qualif Norseman 2026) Bastien adapte parfaitement les séances et la charge d'entraînement à mon planning et à mes déplacements pro. Un vrai coach, au petit soin pour ses athlètes !"</p>
+                    <footer class="common-footer">Benjamin B.</footer>
+                </article>
+
+                <article class="common-card common-card-testimony">
+                    <img src="components/testimony/imgs/Arsene.jpg" alt="Arsène F. - Athlète coaché course à pied" class="common-photo">
+                    <h3 class="common-title">Optimisation et Flexibilité d'Entraînement</h3>
+                    <p class="common-text">"Bastien est un super entraîneur qui fait progresser. Il est à l'écoute et disponible pour ajuster les entraînements et fonction de la forme ou des contraintes familiales ou professionnelles. Il fait des bons retours sur la bonne exécution des entraînements pour maximiser le résultat. Avec lui j'ai fortement progressé en course à pied pour tomber sous les 1h30 sur semi et je suis beaucoup plus performant à vélo alors que c'est mon sport à la base."</p>
+                    <footer class="common-footer">Arsène F.</footer>
+                </article>
+
+                <article class="common-card common-card-testimony">
+                    <img src="components/testimony/imgs/Clemence.jpg" alt="Clémence L. - Athlète coachée triathlon" class="common-photo">
+                    <h3 class="common-title">Individualisation et Disponibilité</h3>
+                    <p class="common-text">"Je suis coachée par Bastien depuis septembre 2023. Je n'ai fait que progresser de par la régularité dans ma pratique mais aussi parce que tout a toujours été adapté (allures/récupérations/volume selon la période). J'apprécie beaucoup aussi les échanges que nous avons avant/après certaines séances clés."</p>
+                    <footer class="common-footer">Clémence L.</footer>
+                </article>
+
+                <article class="common-card common-card-testimony">
+                    <img src="components/testimony/imgs/Romain.jpg" alt="Romain B. - Athlète coaché" class="common-photo">
+                    <h3 class="common-title">Écoute et Pédagogie</h3>
+                    <p class="common-text">"Bastien est un super coach! Il est à l'écoute et compétent. Grâce à lui, j'ai atteint mes objectifs et j'ai développé ma culture de l'entraînement. Il m'implique dans le processus et je comprends enfin ce que je fais à l'entraînement."</p>
+                    <footer class="common-footer">Romain B.</footer>
+                </article>
             </div>
             <div class="dots-container" id="testimony-dots"></div>
         </section>
 
         <section id="suivi" class="common">
-            <h2>PLANS ET SUIVIS PERSONNALISES</h2>
+            <h2>Plans d'Entraînement et Suivi Personnalisé</h2>
             <div class="common-container">
-                <div class="common-card common-card-suivis">
-                    <h3 class="common-title">Plan d'entrainement</h3>
-                    <h3 class="common-title">3 MOIS</h3>
+                <article class="common-card common-card-suivis">
+                    <header>
+                        <h3 class="common-title">Plan d'Entraînement Triathlon</h3>
+                        <h4 class="common-title">3 MOIS</h4>
+                    </header>
                     <ul class="pricing-features">
-                        <li class="valid">Appel d'évaluation initiale : analyse des besoins et diagnostique personnalisé</li>
-                        <li class="valid">Séances-test pour établir un profil d'athlète et définir les zones d'entrainement</li>
-                        <li class="invalid">Profilage physiologique au lactate pour une optimisation maximale de l'entrainement (selon zone géographique)</li>
+                        <li class="valid">Appel d'évaluation initiale : analyse des besoins et diagnostic personnalisé</li>
+                        <li class="valid">Séances-test pour établir un profil d'athlète et définir les zones d'entraînement</li>
+                        <li class="invalid">Profilage physiologique au lactate pour une optimisation maximale de l'entraînement (selon zone géographique)</li>
                         <li class="invalid">Programme personnalisé hebdomadaire</li>
-                        <li class="invalid">Retour quotidien sur chaque entrainement réalisé</li>
+                        <li class="invalid">Retour quotidien sur chaque entraînement réalisé</li>
                         <li class="invalid">Ajustements illimités sur demande en fonction des besoins et des contraintes</li>
-                        <li class="invalid">Courses : Elaboration d'une stratégie optimisée : pacing, nutrition, matériel...</li>
-                        <li class="invalid">Echanges illimités sur Nolio & via Whatsapp</li>
+                        <li class="invalid">Courses : Élaboration d'une stratégie optimisée : pacing, nutrition, matériel...</li>
+                        <li class="invalid">Échanges illimités sur Nolio & via WhatsApp</li>
                         <li class="valid">Un échange téléphonique <strong>mensuel</strong> sur demande</li>
                     </ul>
-                    <p class="price">90€ / mois</p>
-                </div>
+                    <footer class="common-footer">90€ / mois</footer>
+                </article>
 
-                <!-- Suivi Gold -->
-                <div class="common-card common-card-suivis">
-                    <h3 class="common-title">Suivi personnalisé</h3>
-                    <h3 class="common-title">GOLD</h3>
+                <article class="common-card common-card-suivis">
+                    <header>
+                        <h3 class="common-title">Suivi Personnalisé Course à Pied</h3>
+                        <h4 class="common-title">GOLD</h4>
+                    </header>
                     <ul class="pricing-features">
-                        <li class="valid">Appel d'évaluation initiale : analyse des besoins et diagnostique personnalisé</li>
-                        <li class="valid">Séances-test pour établir un profil d'athlète et définir les zones d'entrainement</li>
-                        <li class="invalid">Profilage physiologique au lactate pour une optimisation maximale de l'entrainement (selon zone géographique)</li>
+                        <li class="valid">Appel d'évaluation initiale : analyse des besoins et diagnostic personnalisé</li>
+                        <li class="valid">Séances-test pour établir un profil d'athlète et définir les zones d'entraînement</li>
+                        <li class="invalid">Profilage physiologique au lactate pour une optimisation maximale de l'entraînement (selon zone géographique)</li>
                         <li class="valid">Programme personnalisé hebdomadaire</li>
                         <li class="valid">Retour <s>quotidien</s> <strong>hebdomadaire</strong> sur la semaine écoulée</li>
                         <li class="valid">Ajustements illimités sur demande en fonction des besoins et des contraintes</li>
-                        <li class="valid">Courses : Elaboration d'une stratégie optimisée : pacing, nutrition, matériel...</li>
-                        <li class="valid">Echanges illimités sur Nolio & via Whatsapp</li>
-                        <li class="valid">Echange téléphonique <s>illimité</s> <strong>hebdomadaire</strong> sur demande</li>
+                        <li class="valid">Courses : Élaboration d'une stratégie optimisée : pacing, nutrition, matériel...</li>
+                        <li class="valid">Échanges illimités sur Nolio & via WhatsApp</li>
+                        <li class="valid">Échange téléphonique <s>illimité</s> <strong>hebdomadaire</strong> sur demande</li>
                     </ul>
-                    <p class="price">150€ / mois</p>
-                </div>
+                    <footer class="common-footer">150€ / mois</footer>
+                </article>
 
-                <!-- Suivi PREMIUM -->
-                <div class="common-card common-card-suivis">
-                    <h3 class="common-title">Suivi personnalisé</h3>
-                    <h3 class="common-title">PREMIUM</h3>
+                <article class="common-card common-card-suivis">
+                    <header>
+                        <h3 class="common-title">Suivi Personnalisé Premium</h3>
+                        <h4 class="common-title">PREMIUM</h4>
+                    </header>
                     <ul class="pricing-features">
-                        <li class="valid">Appel d'évaluation initiale : analyse des besoins et diagnostique personnalisé</li>
-                        <li class="valid">Séances-test pour établir un profil d'athlète et définir les zones d'entrainement</li>
-                        <li class="valid">Profilage physiologique au lactate pour une optimisation maximale de l'entrainement (selon zone géographique)</li>
+                        <li class="valid">Appel d'évaluation initiale : analyse des besoins et diagnostic personnalisé</li>
+                        <li class="valid">Séances-test pour établir un profil d'athlète et définir les zones d'entraînement</li>
+                        <li class="valid">Profilage physiologique au lactate pour une optimisation maximale de l'entraînement (selon zone géographique)</li>
                         <li class="valid">Programme personnalisé hebdomadaire</li>
-                        <li class="valid">Retour <strong>quotidien</strong> sur chaque entrainement réalisé</li>
+                        <li class="valid">Retour <strong>quotidien</strong> sur chaque entraînement réalisé</li>
                         <li class="valid">Ajustements illimités sur demande en fonction des besoins et des contraintes</li>
-                        <li class="valid">Courses : Elaboration d'une stratégie optimisée : pacing, nutrition, matériel...</li>
-                        <li class="valid">Echanges illimités sur Nolio & via Whatsapp</li>
-                        <li class="valid">Echange téléphonique <strong>illimité</strong> sur demande</li>
+                        <li class="valid">Courses : Élaboration d'une stratégie optimisée : pacing, nutrition, matériel...</li>
+                        <li class="valid">Échanges illimités sur Nolio & via WhatsApp</li>
+                        <li class="valid">Échange téléphonique <strong>illimité</strong> sur demande</li>
                     </ul>
-                    <p class="price texte-centre">190€ / mois</p>
-                </div>
+                    <footer class="common-footer">190€ / mois</footer>
+                </article>
             </div>
             <div class="dots-container" id="suivi-dots"></div>
         </section>
 
         <section id="services" class="common">
-            <h2 >AUTRES SERVICES</h2>
+            <h2>Autres Services de Coaching Sportif</h2>
             <div class="common-container">
-                <div class="common-card common-card-services">
-                    <h3 class="common-title">TEST PHYSIOLOGIQUE AU LACTATE</h3>
+                <article class="common-card common-card-services">
+                    <header>
+                        <h3 class="common-title">Test Physiologique au Lactate</h3>
+                    </header>
                     <ul class="pricing-features">
                         <li class="valid">Détermination des 2 seuils LT1 et LT2</li>
                         <li class="valid">Cadrage des zones d'entraînement</li>
@@ -137,49 +213,55 @@
                         <li class="valid">Conseil sur l'orientation de l'entraînement</li>
                         <li class="valid">Dossier bilan fourni</li>
                     </ul>
-                    <p class="common-price texte-centre">150€</p>
-                    <p >-10% pour 2 / -20% pour 3</p>
-                </div>
+                    <footer class="common-footer">
+                        <p class="common-price texte-centre">150€</p>
+                        <p>-10% pour 2 / -20% pour 3</p>
+                    </footer>
+                </article>
 
-                <div class="common-card common-card-services">
-                    <h3 class="common-title">PREPARATION MENTALE</h3>
+                <article class="common-card common-card-services">
+                    <header>
+                        <h3 class="common-title">Préparation Mentale</h3>
+                    </header>
                     <ul class="pricing-features">
-                        <li class="invalid">A venir...</li>
+                        <li class="invalid">À venir...</li>
                     </ul>
-                    <p class="common-price"></p>
-                </div>
+                    <footer class="common-footer"></footer>
+                </article>
 
-                <div class="common-card common-card-services">
-                    <h3 class="common-title">ACCOMPAGNEMENT NUTRITIONNEL</h3>
+                <article class="common-card common-card-services">
+                    <header>
+                        <h3 class="common-title">Accompagnement Nutritionnel</h3>
+                    </header>
                     <ul class="pricing-features">
-                        <li class="invalid">A venir...</li>
+                        <li class="invalid">À venir...</li>
                     </ul>
-                    <p class="price"></p>
-                </div>
+                    <footer class="common-footer"></footer>
+                </article>
             </div>
             <div class="dots-container" id="services-dots"></div>
         </section>
 
         <section id="coach-2024-goals" class="common">
-            <h2>Mon parcours en 2024</h2>
+            <h2>Résultats et Performances 2024</h2>
             <div class="common-container">
                 <div class="common-card common-card-stats" data-stat-index="0">
-                    <div class="stat-icon">🏆</div>
+                    <div class="stat-icon" aria-hidden="true">🏆</div>
                     <div class="stat-number">32</div>
                     <div class="stat-title">Records personnels en 2024</div>
                 </div>
                 <div class="common-card common-card-stats" data-stat-index="1">
-                    <div class="stat-icon">🎯</div>
+                    <div class="stat-icon" aria-hidden="true">🎯</div>
                     <div class="stat-number">100%</div>
                     <div class="stat-title">Chance de faire un PR la 1ère année de collaboration</div>
                 </div>
                 <div class="common-card common-card-stats" data-stat-index="2">
-                    <div class="stat-icon">🏁</div>
+                    <div class="stat-icon" aria-hidden="true">🏁</div>
                     <div class="stat-number">42</div>
                     <div class="stat-title">courses en 2024</div>
                 </div>
                 <div class="common-card common-card-stats" data-stat-index="3">
-                    <div class="stat-icon">🤝🏼</div>
+                    <div class="stat-icon" aria-hidden="true">🤝🏼</div>
                     <div class="stat-number">14</div>
                     <div class="stat-title">Athlètes accompagné(e)s en 2024</div>
                 </div>
@@ -198,50 +280,50 @@
             <div class="dots-container" id="carousel-dots"></div>
         </section>
 
-        <!-- Section FAQ -->
         <section id="faq" class="common">
-            <h2>Questions Fréquentes</h2>
+            <h2>Questions Fréquentes sur le Coaching Sportif</h2>
             <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">Par où commencer ?</div>
+                <details class="faq-item">
+                    <summary class="faq-question">Par où commencer avec un coach sportif ?</summary>
                     <div class="faq-answer">
-                        <p>Il suffit de me contacter par mail en me laissant tes coordonnées et tes disponibilités. Nous ferons alors connaissance pour définir les objectifs en fonction de ton expérience, de tes contraintes et de tes envies. Cette étape est essentielle pour élaborer un programme personnalisé adapté à tes besoins. Il faut prévoir entre 30min et 1h pour ce premier bilan complet.
-                            Ensuite, je te donnerai accès à la plateforme Nolio qu'il faudra configurer. Ensuite, c'est parti pour les premières séance !</p>
+                        <p>Il suffit de me contacter par mail en me laissant tes coordonnées et tes disponibilités. Nous ferons alors connaissance pour définir les objectifs en fonction de ton expérience, de tes contraintes et de tes envies. Cette étape est essentielle pour élaborer un programme personnalisé adapté à tes besoins. Il faut prévoir entre 30min et 1h pour ce premier bilan complet. Ensuite, je te donnerai accès à la plateforme Nolio qu'il faudra configurer. Ensuite, c'est parti pour les premières séances !</p>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Quelles sont les tarifs proposés ?</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Quels sont les tarifs du coaching sportif ?</summary>
                     <div class="faq-answer">
-                        <p>Nous proposons plusieurs formules :</p>
+                        <p>Nous proposons plusieurs formules de coaching sportif :</p>
                         <ul>
-                            <li>Séance individuelle : 60€</li>
-                            <li>Forfait 10 séances : 550€ (soit 55€/séance)</li>
-                            <li>Suivi mensuel (8 séances + suivi nutritionnel) : 440€/mois</li>
-                            <li>Coaching en ligne : à partir de 150€/mois</li>
+                            <li><strong>Plan d'entraînement 3 mois</strong> : 90€/mois</li>
+                            <li><strong>Suivi personnalisé Gold</strong> : 150€/mois</li>
+                            <li><strong>Suivi personnalisé Premium</strong> : 190€/mois</li>
+                            <li><strong>Test physiologique au lactate</strong> : 150€</li>
                         </ul>
-                        <p>N'hésitez pas à nous contacter pour une offre personnalisée.</p>
+                        <p>N'hésitez pas à me contacter pour une offre personnalisée adaptée à vos objectifs.</p>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Est-ce qu'il faut un niveau minimum pour être accompagné ?</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Faut-il un niveau minimum pour être coaché en triathlon ?</summary>
                     <div class="faq-answer">
-                        <p>Absolument pas ! Nos programmes sont adaptés à tous les niveaux, du débutant complet au sportif
-                            confirmé. L'important est ta motivation et ta régularité. Nous ajustons l'intensité et la
-                            difficulté des exercices en fonction de ton niveau et de ta progression.</p>
+                        <p>Absolument pas ! Mes programmes de coaching sont adaptés à tous les niveaux, du débutant complet au sportif confirmé en triathlon ou course à pied. L'important est ta motivation et ta régularité. J'ajuste l'intensité et la difficulté des exercices en fonction de ton niveau et de ta progression.</p>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Proposez-vous un suivi nutritionnel ?</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Proposez-vous un suivi nutritionnel ?</summary>
                     <div class="faq-answer">
-                        <p>Pas encore, mais ça va venir ! ;)</p>
+                        <p>Pas encore, mais ça va venir ! En attendant, je peux vous donner des conseils nutritionnels de base adaptés à votre entraînement en triathlon ou course à pied.</p>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Où se déroulent les séances d'entraînement ?</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Où se déroulent les séances d'entraînement ?</summary>
                     <div class="faq-answer">
-                        <p>Où tu veux ! Tu auras ton planning d'entrainement sur la plateforme Nolio. Chaque séance sera automatiquement synchronisée dans ta montre GPS et ton compteur vélo pour que tu puisse simplement suivre les exercices à la bonne intensité.</p>
+                        <p>Où tu veux ! Tu auras ton planning d'entraînement sur la plateforme Nolio. Chaque séance sera automatiquement synchronisée dans ta montre GPS et ton compteur vélo pour que tu puisses simplement suivre les exercices à la bonne intensité.</p>
                     </div>
-                </div>
+                </details>
             </div>
         </section>
 
@@ -282,7 +364,7 @@
         </div>
     </main>
     <footer>
-        <div class="footer-content">
+        <div id="footer-content">
             <div id="footer-section">
                 <h3>Suivez-moi</h3>
                 <a class="reseau" href="https://www.facebook.com/Zone2CoachingBastienGuilbaud">Facebook</a>

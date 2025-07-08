@@ -11,7 +11,7 @@ body {
     line-height: 1.6;
 }
 
-header {
+#main-header {
     position: relative;
     background: url('img/header-background.jpg') center/cover no-repeat;
     color: white;
@@ -30,7 +30,7 @@ header {
 }
 
 /* Dégradé fondu en bas */
-header::after {
+#main-header::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -42,7 +42,7 @@ header::after {
     z-index: 1;
 }
 
-header::before {
+#main-header::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -50,19 +50,19 @@ header::before {
     z-index: 0;
 }
 
-header > * {
+#main-header > * {
     position: relative;
     z-index: 1;
 }
 
 /* Pour que le contenu reste au-dessus du fondu */
-.header-left,
+#header-left,
 nav {
     position: relative;
     z-index: 2;
 }
 
-.header-left{
+#header-left{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,7 +77,7 @@ nav {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
 }
 
-header h1 {
+#main-header h1 {
     font-size: 1.8rem;
     font-weight: bold;
     margin: 0;
@@ -126,18 +126,19 @@ h2 {
     color: #222;
 }
 
-/* Footer */
-footer {
+#footer-content {
+    display: flex;
+    justify-content: space-between;
     position: relative;
-    background: url('img/footer-background.jpg') center top -600px / cover no-repeat;
+    background: url('img/footer-background.jpg') center top -650px / cover no-repeat;
     color: white;
     padding: 4rem 2rem 2rem;
     margin-top: 2rem;
     overflow: hidden;
+    z-index: 2;
 }
 
-/* Dégradé fondu en haut */
-footer::before {
+#footer-content::before {
     content: '';
     position: absolute;
     top: 0;
@@ -147,12 +148,6 @@ footer::before {
     background: linear-gradient(to top, rgba(0,0,0,0) 0%, white 100%);
     pointer-events: none;
     z-index: 1;
-}
-
-/* Pour s'assurer que le contenu reste lisible et au-dessus du fondu */
-.footer-content {
-    position: relative;
-    z-index: 2;
 }
 
 .cta-button {
@@ -306,11 +301,6 @@ body {
     font-size: 3rem;
 }
 
-.footer-content{
-    display: flex;
-    justify-content: space-between;
-}
-
 #sticky-banner {
     position: fixed;
     bottom: 20px;
@@ -386,10 +376,12 @@ body {
     font-style: italic;
 }
 
-.common-author {
+.common-footer {
     font-weight: bold;
     color: #666;
     align-self: flex-end;
+    margin-top: auto;
+    text-align: right;
 }
 
 #contactForm {
@@ -445,6 +437,48 @@ body {
     background-color: #333;
 }
 
+.no-bullet-point{
+    list-style:none;
+}
+
+
+
+
+.btn-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-submit.loading::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.dots-loader {
+    display: inline-block;
+}
+
+.dots-loader::after {
+    content: '';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+}
+
 @media (max-width: 768px) {
     #sticky-banner.right-position {
         right: 20px;
@@ -459,7 +493,7 @@ body {
         display: flex;
     }
 
-    header {
+    #main-header {
         flex-direction: column;
         text-align: center;
         padding: 1rem;
@@ -510,11 +544,8 @@ body {
         visibility: visible;
     }
 
-    footer {
+    #footer-content {
         background: url('img/footer-background.jpg') center top -100px / cover no-repeat;
-    }
-
-    .footer-content {
         padding-bottom: 1rem;
     }
 

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zone-2-coaching.onrender.com/sitemap.xml
