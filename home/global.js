@@ -91,13 +91,13 @@ window.sendEmailRequest = function sendEmailRequest() {
 
 document.addEventListener("DOMContentLoaded", function () {
     class FlexiblePagination {
+        _;
         constructor(config) {
             this.sectionId = config.sectionId;
             this.cardSelector = config.cardSelector;
             this.dotsContainerId = config.dotsContainerId;
             this.gap = config.gap || 32; // 2rem par défaut
-
-            this.init();
+            new Promise(r => setTimeout(r, 1000)).then(_ => this.init());
         }
 
         init() {
@@ -105,8 +105,16 @@ document.addEventListener("DOMContentLoaded", function () {
             this.cards = this.container.querySelectorAll(this.cardSelector);
             this.dotsContainer = document.getElementById(this.dotsContainerId);
 
-            if (!this.container || !this.cards.length || !this.dotsContainer) {
-                console.warn(`Pagination non initialisée pour ${this.sectionId}: éléments manquants`);
+            if (!this.container) {
+                console.warn(`Pagination non initialisée pour ${this.sectionId}: éléments manquants this.container`);
+                return;
+            }
+            if(!this.cards.length){
+                console.warn(`Pagination non initialisée pour ${this.sectionId}: éléments manquants this.cards`);
+                return;
+            }
+            if(!this.dotsContainer){
+                console.warn(`Pagination non initialisée pour ${this.sectionId}: éléments manquants this.dotsContainer`);
                 return;
             }
 
