@@ -319,8 +319,141 @@ body {
     padding: 10px;
 }
 
+.common {
+    background-color: #f9f9f9;
+    padding-top: 2em;
+}
+
+.common h2 {
+    text-align: center;
+}
+
+.common-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.common-card {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+}
+
+.common-card-stats {
+    width: 20%;
+}
+
+.common-card-services {
+    width: 30%;
+}
+
+.common-card-suivis {
+    width: 30%;
+}
+
+.common-card-testimony {
+    width: 20%;
+}
+
+.common-card:hover {
+    transform: translateY(-5px);
+}
+
+.common-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #f0f0f0;
+}
+
+.common-title {
+    color: #444;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.common-text {
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.common-author {
+    font-weight: bold;
+    color: #666;
+    align-self: flex-end;
+}
+
+#contactForm {
+    padding: 1.5rem;
+    justify-content: center;
+}
+
+.pricing-features li.valid::before {
+    content: "✓";
+    color: #4a90e2;
+}
+
+.pricing-features li.invalid::before {
+    content: "✗";
+    color: #e94f4f;
+}
+
+.pricing-features li {
+    list-style: none;
+}
+
+.scroll-indicator {
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.common-card-carrousel{
+    width: 20%;
+}
+
+.common-img-carrousel{
+    width: 25em;
+}
+
+.dots-container {
+    display: none; /* Affiché seulement en mobile */
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.dots-container .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.dots-container .dot.active {
+    background-color: #333;
+}
 
 @media (max-width: 768px) {
+    .dots-container {
+        display: flex;
+    }
+
     header {
         flex-direction: column;
         text-align: center;
@@ -378,5 +511,36 @@ body {
 
     .footer-content {
         padding-bottom: 1rem;
+    }
+
+    .common-container {
+        /* Activation du scroll horizontal */
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+
+        /* Scroll fluide */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+
+        /* Centrage de la première carte */
+        padding-left: calc(50vw - 175px);
+        padding-right: calc(50vw - 175px);
+
+        /* Alignement pour le scroll */
+        justify-content: flex-start;
+    }
+
+    .common-card-testimony,
+    .common-card-stats,
+    .common-card-services,
+    .common-card-suivis {
+        flex: 0 0 350px;
+        width: 350px;
+        min-width: 350px;
+    }
+
+    .common-img-carrousel{
+        width: 20em;
     }
 }

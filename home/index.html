@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach Sportif - Votre Partenaire Fitness</title>
+    <meta name="description" content="Coaching personnalisé en triathlon, course à pied et préparation physique.">
     <script src="global.js" type="module"></script>
     <link rel="icon" type="image/png" href="img/logo.jpeg" />
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="components/faq/faq.css">
     <link rel="stylesheet" href="components/stats/stats.css">
-    <link rel="stylesheet" href="components/commons.css">
 </head>
 <body>
     <header>
@@ -35,7 +35,7 @@
             <img id="main-img" src="img/le-coach.jpeg" alt="Entraînement sportif">
         </section>
 
-        <section class="common">
+        <section id="testimony" class="common">
             <h2>Témoignages</h2>
             <div class="common-container">
                 <div class="common-card common-card-testimony">
@@ -63,7 +63,7 @@
                     <p class="common-author">Romain B.</p>
                 </div>
             </div>
-            <p class="swip-arrow">→</p>
+            <div class="dots-container" id="testimony-dots"></div>
         </section>
 
         <section id="suivi" class="common">
@@ -122,10 +122,10 @@
                     <p class="price texte-centre">190€ / mois</p>
                 </div>
             </div>
-            <p class="swip-arrow">→</p>
+            <div class="dots-container" id="suivi-dots"></div>
         </section>
 
-        <section class="common">
+        <section id="services" class="common">
             <h2 >AUTRES SERVICES</h2>
             <div class="common-container">
                 <div class="common-card common-card-services">
@@ -157,10 +157,10 @@
                     <p class="price"></p>
                 </div>
             </div>
-            <p class="swip-arrow">→</p>
+            <div class="dots-container" id="services-dots"></div>
         </section>
 
-        <section class="common">
+        <section id="coach-2024-goals" class="common">
             <h2>Mon parcours en 2024</h2>
             <div class="common-container">
                 <div class="common-card common-card-stats" data-stat-index="0">
@@ -184,10 +184,10 @@
                     <div class="stat-title">Athlètes accompagné(e)s en 2024</div>
                 </div>
             </div>
-            <p class="swip-arrow">→</p>
+            <div class="dots-container" id="parcours-dots"></div>
         </section>
 
-        <section class="common">
+        <section id="carousel" class="common">
             <h2>Performances des athlètes coachés</h2>
             <div class="common-container" id="carousel-container">
                 <div id="loading" class="loading">Chargement des images...</div>
@@ -195,7 +195,7 @@
                 <div class="carousel" style="display: none;"></div>
                 <div class="indicators"></div>
             </div>
-            <p class="swip-arrow">→</p>
+            <div class="dots-container" id="carousel-dots"></div>
         </section>
 
         <!-- Section FAQ -->

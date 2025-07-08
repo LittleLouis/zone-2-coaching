@@ -4,7 +4,7 @@ use lettre::{
 };
 use lettre::message::header::ContentType;
 use tracing::{debug};
-
+use tracing::log::info;
 use crate::models::mail::EmailConfig;
 
 pub fn send_email(
@@ -55,12 +55,12 @@ pub fn send_email(
         .tls(lettre::transport::smtp::client::Tls::Required(tls_parameters))
         .build();
 
-    debug!("Tentative d'envoi de l'email...");
+    info!("Tentative d'envoi de l'email...");
 
     // Envoi de l'email
     transport.send(&email)
         .map_err(|e| format!("Échec de l'envoi de l'email: {}", e))?;
 
-    debug!("Email envoyé avec succès");
+    info!("Email envoyé avec succès");
     Ok(())
 }

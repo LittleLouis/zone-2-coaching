@@ -88,3 +88,151 @@ window.sendEmailRequest = function sendEmailRequest() {
             if (submitBtn) submitBtn.disabled = false;
         });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    class FlexiblePagination {
+        constructor(config) {
+            this.sectionId = config.sectionId;
+            this.cardSelector = config.cardSelector;
+            this.dotsContainerId = config.dotsContainerId;
+            this.gap = config.gap || 32; // 2rem par défaut
+
+            this.init();
+        }
+
+        init() {
+            this.container = document.querySelector(`#${this.sectionId} .common-container`);
+            this.cards = this.container.querySelectorAll(this.cardSelector);
+            this.dotsContainer = document.getElementById(this.dotsContainerId);
+
+            if (!this.container || !this.cards.length || !this.dotsContainer) {
+                console.warn(`Pagination non initialisée pour ${this.sectionId}: éléments manquants`);
+                return;
+            }
+
+            this.createDots();
+            this.addEventListeners();
+            this.addTouchSupport();
+        }
+
+        createDots() {
+            // Créer les dots de pagination
+            this.cards.forEach((_, i) => {
+                const dot = document.createElement("span");
+                dot.classList.add("dot");
+                if (i === 0) dot.classList.add("active");
+
+                dot.addEventListener("click", () => {
+                    this.scrollToCard(i);
+                });
+
+                this.dotsContainer.appendChild(dot);
+            });
+
+            this.dots = this.dotsContainer.querySelectorAll(".dot");
+        }
+
+        scrollToCard(index) {
+            const cardWidth = this.cards[0].offsetWidth;
+            const scrollPosition = index * (cardWidth + this.gap);
+
+            this.container.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        updateActiveDot() {
+            const scrollLeft = this.container.scrollLeft;
+            const cardWidth = this.cards[0].offsetWidth;
+            const cardWidthWithGap = cardWidth + this.gap;
+
+            const index = Math.round(scrollLeft / cardWidthWithGap);
+
+            this.dots.forEach(dot => dot.classList.remove("active"));
+            if (this.dots[index]) {
+                this.dots[index].classList.add("active");
+            }
+        }
+
+        addEventListeners() {
+            let scrollTimeout;
+            this.container.addEventListener("scroll", () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => this.updateActiveDot(), 50);
+            });
+        }
+
+        addTouchSupport() {
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+
+            this.container.addEventListener("touchstart", (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            this.container.addEventListener("touchmove", (e) => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+            });
+
+            this.container.addEventListener("touchend", () => {
+                if (!isDragging) return;
+                isDragging = false;
+
+                const diff = startX - currentX;
+                const threshold = 50;
+
+                if (Math.abs(diff) > threshold) {
+                    const currentIndex = Math.round(this.container.scrollLeft / (this.cards[0].offsetWidth + this.gap));
+                    if (diff > 0 && currentIndex < this.cards.length - 1) {
+                        this.scrollToCard(currentIndex + 1);
+                    } else if (diff < 0 && currentIndex > 0) {
+                        this.scrollToCard(currentIndex - 1);
+                    }
+                }
+            });
+        }
+    }
+
+    // Configuration des différentes sections
+    const paginationConfigs = [
+        {
+            sectionId: 'testimony',
+            cardSelector: '.common-card-testimony',
+            dotsContainerId: 'testimony-dots',
+            gap: 32
+        },
+        {
+            sectionId: 'suivi',
+            cardSelector: '.common-card-suivis',
+            dotsContainerId: 'suivi-dots',
+            gap: 32
+        },
+        {
+            sectionId: 'services',
+            cardSelector: '.common-card-services',
+            dotsContainerId: 'services-dots',
+            gap: 32
+        },
+        {
+            sectionId: 'coach-2024-goals',
+            cardSelector: '.common-card-stats',
+            dotsContainerId: 'parcours-dots',
+            gap: 32
+        },
+        {
+            sectionId: 'carousel',
+            cardSelector: '.common-img-carrousel',
+            dotsContainerId: 'carousel-dots',
+            gap: 32
+        }
+    ];
+
+    // Initialiser la pagination pour chaque section
+    paginationConfigs.forEach(config => {
+        new FlexiblePagination(config);
+    });
+});
