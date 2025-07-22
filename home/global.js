@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.sectionId = config.sectionId;
             this.cardSelector = config.cardSelector;
             this.dotsContainerId = config.dotsContainerId;
-            this.gap = config.gap || 32; // 2rem par défaut
+            this.gap = config.gap || 32;
             new Promise(r => setTimeout(r, 1000)).then(_ => this.init());
         }
 

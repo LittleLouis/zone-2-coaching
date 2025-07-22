@@ -32,7 +32,6 @@ pub async fn send_mail(
     // Configuration des adresses email
     let config = EmailConfig {
         from: "Zone 2 coaching <cmoilouis@gmail.com>".to_string(),
-        reply_to: "bastien.guilbaud@gmail.com".to_string(),
         to: "bastien.guilbaud@gmail.com".to_string(),
         smtp_server: "smtp.gmail.com".to_string(),
         smtp_user: "cmoilouis@gmail.com".to_string(),

@@ -1,8 +1,13 @@
+use std::str::FromStr;
 use lettre::{
     transport::smtp::{authentication::{Credentials}, client::TlsParameters},
     Message, SmtpTransport, Transport,
 };
 use lettre::message::header::ContentType;
+use lettre::{
+    message::{Mailbox},
+    Address,
+};
 use tracing::{debug};
 use tracing::log::info;
 use crate::models::mail::EmailConfig;
@@ -20,9 +25,6 @@ pub fn send_email(
     let from_address = config.from.parse()
         .map_err(|e| format!("Adresse d'expéditeur invalide: {}", e))?;
 
-    let reply_to_address = config.reply_to.parse()
-        .map_err(|e| format!("Adresse de réponse invalide: {}", e))?;
-
     let to_address = config.to.parse()
         .map_err(|e| format!("Adresse de destinataire invalide: {}", e))?;
 
@@ -31,11 +33,11 @@ pub fn send_email(
     // Construction de l'email
     let email = Message::builder()
         .from(from_address)
-        .reply_to(reply_to_address)
+        .reply_to(Mailbox::new(format!("{} {}", name, surname).into(), Address::from_str(&email).unwrap()))
         .to(to_address)
         .subject(format!("Zone 2 coaching - Demande de contacte {} {}", name, surname))
         .header(ContentType::TEXT_PLAIN)
-        .body(format!("{}\n Email de l'expéditeur/trice{}", message, email))
+        .body(format!("{}\n Email de l'expéditeur/trice {}", message, email))
         .map_err(|e| format!("Échec de la création de l'email: {}", e))?;
 
     debug!("Configuration du transport SMTP pour {}:{}...", config.smtp_server, config.smtp_port);

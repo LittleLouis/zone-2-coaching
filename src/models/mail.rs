@@ -11,7 +11,6 @@ pub struct MailModel {
 #[derive(Debug, Clone)]
 pub struct EmailConfig {
     pub from: String,
-    pub reply_to: String,
     pub to: String,
     pub smtp_server: String,
     pub smtp_user: String,
