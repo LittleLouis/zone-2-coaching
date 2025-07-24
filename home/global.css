@@ -482,7 +482,8 @@ body {
 
 .grid-scroller {
     overflow: auto;
-    height: 100dvh;
+    height: auto;
+    max-height: 80vh; /* Ou 90vh selon vos besoins */
 }
 
 .grid {
