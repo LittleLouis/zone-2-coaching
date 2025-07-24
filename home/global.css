@@ -482,7 +482,7 @@ body {
 
 .grid-scroller {
     overflow: auto;
-    height: 100vh;
+    height: 100dvh;
 }
 
 .grid {
@@ -546,6 +546,9 @@ body {
     text-align: center;
     color: #374151;
     align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .grid-entry.fixed-left {
@@ -575,21 +578,6 @@ body {
 .grid-entry:not(.fixed-left) {
     font-size: 18px;
     font-weight: 600;
-}
-
-/* Badges pour les textes en surbrillance */
-.highlight-text {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    margin-left: 8px;
 }
 
 /* Style spécial pour la ligne des prix */
