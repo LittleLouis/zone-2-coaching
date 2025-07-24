@@ -21,6 +21,7 @@
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
+    user-select: none; /* Empêche la sélection de texte */
 }
 
 .faq-question:hover {
@@ -30,23 +31,26 @@
 .faq-question::after {
     content: '+';
     font-size: 20px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
+    flex-shrink: 0; /* Empêche la compression */
 }
 
 .faq-item.active .faq-question::after {
     content: '-';
+    transform: rotate(0deg); /* Animation plus fluide */
 }
 
 .faq-answer {
-    padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition: max-height 0.3s ease-out;
+    background-color: #fff;
+    padding: 0 15px; /* Padding horizontal seulement */
 }
 
 .faq-item.active .faq-answer {
-    padding: 15px;
-    max-height: 500px;
+    max-height: 1000px;
+    padding: 15px; /* Padding complet quand ouvert */
 }
 
 .faq-answer ul {

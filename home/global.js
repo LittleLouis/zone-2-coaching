@@ -147,7 +147,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         createDots() {
             // Créer les dots de pagination
-            this.cards.forEach((_, i) => {
+            this.cards.forEach((elem, i) => {
+                if (elem.classList.contains("hidedive")){
+                    return;
+                }
+
                 const dot = document.createElement("span");
                 dot.classList.add("dot");
                 if (i === 0) dot.classList.add("active");

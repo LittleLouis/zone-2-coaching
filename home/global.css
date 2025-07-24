@@ -445,9 +445,6 @@ body {
     list-style:none;
 }
 
-
-
-
 .btn-submit:disabled {
     background: #ccc;
     cursor: not-allowed;
@@ -482,118 +479,166 @@ body {
     60% { content: '..'; }
     80%, 100% { content: '...'; }
 }
-.table-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+
+.grid-scroller {
+    overflow: auto;
+    height: 100vh;
 }
 
-.section-header {
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
+.grid {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    width: max-content;
 }
 
-.plans-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-    min-width: 800px;
-}
-
-.plans-table thead {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: white;
-}
-
-.plans-table th {
-    padding: 20px 15px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.plans-table th:last-child {
-    border-right: none;
-}
-
-.plan-name {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.plan-duration {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    font-weight: 400;
-}
-
-.plans-table tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
-}
-
-.plans-table tbody tr:hover {
-    background-color: #e3f2fd;
-    transition: background-color 0.3s ease;
-}
-
-.plans-table td {
-    padding: 15px;
-    border-right: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
-    vertical-align: top;
-}
-
-.plans-table td:last-child {
-    border-right: none;
-}
-
-.feature-cell {
-    text-align: left;
+.grid-entry,
+.grid-header {
+    padding: 16px 20px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    line-height: 1.5;
     font-weight: 500;
-    color: #2c3e50;
 }
 
-.check-cell {
+.grid-header {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-weight: 600;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.valid {
-    color: #27ae60;
+.grid-header.fixed-left {
+    z-index: 2;
 }
 
-.invalid {
-    color: #e74c3c;
+.fixed-left {
+    position: sticky;
+    left: 0;
+    background: #f1f5f9;
+    z-index: 2;
+    border-right: 2px solid #94a3b8;
+    text-align: left;
 }
 
-.price-row {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
-    font-weight: bold;
+.fixed-first {
+    z-index: 3;
+    position: sticky;
+    left: 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 16px;
+    font-weight: 700;
+    align-content: center;
 }
 
-.price-cell {
+.grid-entry {
+    background: white;
     text-align: center;
-    font-size: 1.3rem;
-    color: #2c3e50;
-    padding: 25px 15px;
+    color: #374151;
+    align-content: center;
 }
 
+.grid-entry.fixed-left {
+    background: #f1f5f9;
+    text-align: left;
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* Couleurs alternées pour les colonnes */
+.grid-entry:nth-child(4n+2) {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.grid-entry:nth-child(4n+3) {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.grid-entry:nth-child(4n) {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+/* Style pour les checkmarks et croix */
+.grid-entry:not(.fixed-left) {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Badges pour les textes en surbrillance */
 .highlight-text {
-    font-weight: bold;
-    color: #2980b9;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin-left: 8px;
 }
 
-.strikethrough {
-    text-decoration: line-through;
-    opacity: 0.6;
+/* Style spécial pour la ligne des prix */
+.grid-entry:last-child,
+.grid-entry:nth-last-child(2),
+.grid-entry:nth-last-child(3) {
+    font-weight: 700;
+    font-size: 16px;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.grid-entry.fixed-left:nth-last-child(4) {
+    font-size: 18px;
+    color: #1e40af;
+    font-weight: 700;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+/* Effet de hover */
+.grid-entry:hover:not(.fixed-left) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+/* Style de la scrollbar */
+.grid-scroller::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.grid-scroller::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.grid-scroller::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    border-radius: 4px;
+}
+
+.grid-scroller::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+}
+
+#grid-middle{
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -697,27 +742,21 @@ body {
         width: 20em;
     }
 
-    .table-section {
-        margin: 10px;
-        border-radius: 8px;
+    .grid-header span {
+        display: inline-block;
+        transform: rotate(-60deg);
+        white-space: nowrap;
     }
 
-    .section-header {
-        padding: 20px 15px;
+    .grid-header-biais{
+        height: calc(100px * 1.414); /* longueur du texte × √2 pour 45° */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5px;
     }
 
-    .plans-table th,
-    .plans-table td {
-        padding: 12px 10px;
-        font-size: 0.9rem;
-    }
-
-    .plan-name {
-        font-size: 1rem;
-    }
-
-    .price-cell {
-        font-size: 1.1rem;
-        padding: 20px 10px;
+    .grid {
+        grid-template-columns: 200px 100px 100px 100px;
     }
 }
