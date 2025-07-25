@@ -31,11 +31,11 @@ pub async fn send_mail(
 
     // Configuration des adresses email
     let config = EmailConfig {
-        from: "Zone 2 coaching <cmoilouis@gmail.com>".to_string(),
+        from: "Zone 2 coaching <bastien.guilbaud@gmail.com>".to_string(),
         to: "bastien.guilbaud@gmail.com".to_string(),
         smtp_server: "smtp.gmail.com".to_string(),
-        smtp_user: "cmoilouis@gmail.com".to_string(),
-        smtp_password: "ddid gscg jecq cpzd".to_string(),
+        smtp_user: "bastien.guilbaud@gmail.com".to_string(),
+        smtp_password: "pkbx ikbs gbpc zjvv".to_string(),
         smtp_port: 587,
     };
 
